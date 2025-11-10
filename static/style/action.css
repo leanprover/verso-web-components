@@ -1,0 +1,70 @@
+.cta-section .cta-container {
+    padding: var(--space-16);
+    background: linear-gradient(45deg, var(--color-primary), #2387f7);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.cta .background-wrapper {
+    position: absolute;
+    right: 0px;
+}
+
+.cta-title {
+    font-size: var(--fs-2xl);
+    font-weight: bold;
+    color: var(--color-text-contrast);
+    margin-bottom: var(--space-2);
+}
+
+.cta-subtitle {
+    font-size: var(--fs-md);
+    color: var(--color-text-contrast);
+    margin-bottom: var(--space-6);
+}
+
+.cta-buttons {
+    display: flex;
+    width: fit-content;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-section .container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-md);
+}
+
+@media (max-width: 768px) {
+    .cta-section .container {
+        width: 100%;
+        padding: 0px;
+    }
+
+    .cta-section .cta-container {
+        height: fit-content;
+        padding: var(--space-16) var(--space-8);
+    }
+
+    .cta-title {
+        font-size: 2rem;
+    }
+
+    .cta-buttons a {
+        width: 100%;
+    }
+}
+
+.cta-section .learn-button {
+    color: var(--color-text-contrast);
+    border: 2px solid var(--color-text-contrast);
+    background: transparent;
+}
