@@ -54,6 +54,16 @@ structure NavBarItem where
 deriving Repr
 
 /--
+Configuration for the sub-navigation bar
+-/
+structure SubNavBarConfig where
+  /--
+  Menu items for the sub-navigation
+  -/
+  menuItems : Array NavBarItem
+deriving Inhabited
+
+/--
 Configuration for the navigation bar
 -/
 structure NavBarConfig where
@@ -76,6 +86,11 @@ structure NavBarConfig where
   External links
   -/
   externalLinks : Array NavBarItem
+
+  /--
+  Sub navbar
+  -/
+  subNavBar : Option SubNavBarConfig
 deriving Inhabited
 
 namespace NavBar
@@ -109,6 +124,22 @@ private def renderItem (item : NavBarItem) : Html :=
   }}
 
 /--
+Render the sub-navigation bar
+-/
+def renderSub [MonadStateOf Component.State m] [Monad m] (config : SubNavBarConfig) : m Html := do
+  return {{
+    <nav class="sub-navbar">
+      <div class="navbar-container container">
+        {{ renderFroLogo }}
+
+        <ul class="nav-list">
+          {{ config.menuItems.map renderItem }}
+        </ul>
+      </div>
+    </nav>
+  }}
+
+/--
 Render the complete navigation bar
 -/
 def render [MonadStateOf Component.State m] [Monad m] (config : NavBarConfig) : m Html := do
@@ -135,6 +166,7 @@ def render [MonadStateOf Component.State m] [Monad m] (config : NavBarConfig) : 
           </ul>
         </menu>
       </div>
+
       -- The mobile navigation menu.
       <menu class="mobile-nav">
         <ul class="nav-list">
@@ -150,32 +182,8 @@ def render [MonadStateOf Component.State m] [Monad m] (config : NavBarConfig) : 
         </ul>
       </menu>
     </nav>
-  }}
 
-/--
-Configuration for the sub-navigation bar
--/
-structure SubNavBarConfig where
-  /--
-  Menu items for the sub-navigation
-  -/
-  menuItems : Array NavBarItem
-deriving Inhabited
-
-/--
-Render the sub-navigation bar
--/
-def renderSub [MonadStateOf Component.State m] [Monad m] (config : SubNavBarConfig) : m Html := do
-  return {{
-    <nav class="sub-navbar">
-      <div class="navbar-container container">
-        {{ renderFroLogo }}
-
-        <ul class="nav-list">
-          {{ config.menuItems.map renderItem }}
-        </ul>
-      </div>
-    </nav>
+    {{ ← if let some res := config.subNavBar then renderSub res else pure .empty }}
   }}
 
 end Verso.Web.Components.NavBar

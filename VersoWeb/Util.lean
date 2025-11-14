@@ -66,17 +66,6 @@ partial defmethod Array.chunk (array : Array α) (size : Nat) : Array (Array α)
   go array size #[]
 
 /--
-Sets or updates the given attribute on the first HTML tag node.
--/
-def setAttribute (attr : String) (value : String) (html : Html) : Html :=
-  match html with
-  | .tag name attrs children =>
-    match attrs.findIdx? ((· == attr) ∘ Prod.fst) with
-    | none => .tag name (attrs.push (attr, value)) children
-    | some i => .tag name (attrs.set! i (attr, value)) children
-  | _ => html
-
-/--
 Sets an attribute on an HTML element only if the value is defined.
 -/
 def setAttributeOption (attr : String) (value : Option String) (html : Html) : Html :=
