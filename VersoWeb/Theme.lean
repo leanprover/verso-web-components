@@ -1,0 +1,30 @@
+/-
+Copyright (c) 2025 Lean FRO LLC. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Author: Sofia Rodrigues
+-/
+import VersoBlog
+
+import VersoWeb.Theme.Archive
+import VersoWeb.Theme.Category
+import VersoWeb.Theme.Primary
+import VersoWeb.Theme.Post
+import VersoWeb.Theme.Page
+import VersoWeb.Theme.Css
+
+namespace Verso.Web
+
+open Verso Genre Blog
+open Verso.Web Components
+
+/--
+The main theme of the lean-lang.org website.
+-/
+def theme (config : Verso.Web.Theme.SiteConfig) (layoutConfig : Verso.Web.Theme.LayoutConfig) (navBar : TemplateM NavBarConfig) (footer : TemplateM FooterConfig) : Theme where
+  primaryTemplate := Verso.Web.Theme.primaryTemplate config .empty navBar footer
+  pageTemplate := Verso.Web.Theme.pageTemplate layoutConfig
+  postTemplate := Verso.Web.Theme.postTemplate layoutConfig.postConfig
+  archiveEntryTemplate := Verso.Web.Theme.archiveEntry
+  categoryTemplate := Verso.Web.Theme.categoryTemplate
+
+end Verso.Web

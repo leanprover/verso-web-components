@@ -4,7 +4,7 @@ open Lake DSL
 require verso from git "https://github.com/leanprover/verso" @ "main"
 require subverso from git "https://github.com/leanprover/subverso" @ "main"
 
-package leanwebui where
+package versowebcomponents where
   moreLeancArgs := #["-O0"]
   moreLinkArgs :=
     if System.Platform.isOSX then
@@ -12,4 +12,4 @@ package leanwebui where
     else #[]
 
 @[default_target]
-lean_lib LeanUI where
+lean_lib VersoWeb where
