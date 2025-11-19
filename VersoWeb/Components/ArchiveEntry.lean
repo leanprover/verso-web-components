@@ -43,7 +43,6 @@ def archiveEntry [MonadStateOf Component.State m] [Monad m]
     (summary : Option Html)
     (image : Option (String × String)) : m Html := do
   saveCss (include_str "../../static/style/archive-entry.css")
-
   return {{
     <li>
       {{renderArchiveImage image}}
