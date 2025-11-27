@@ -17,6 +17,10 @@
     gap: 30px;
 }
 
+.steps-container .content {
+    margin: 15px 0px;
+}
+
 .step-box {
     flex: 1;
     line-height: 1.3;
