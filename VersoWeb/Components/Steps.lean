@@ -25,7 +25,7 @@ block_component +directive installSteps where
           </div>
           {{ ← goB <| blocks[0]! }}
           <div class="buttons">
-            <a href="https://code.visualstudio.com/" target="_blank" class="step-button primary">"Install VS Code"</a>
+            <a href="https://code.visualstudio.com/" target="_blank" class="step-button primary plausible-event-name=Install+Step1">"Install VS Code"</a>
           </div>
         </div>
         <div class="card step-box white-blue-gradient">
@@ -35,7 +35,7 @@ block_component +directive installSteps where
           </div>
           {{ ← goB <| blocks[1]! }}
           <div class="buttons">
-            <a href="vscode:extension/leanprover.lean4"  data-modal-target="install-extension" class="step-button primary">"Get the extension"</a>
+            <a href="vscode:extension/leanprover.lean4"  data-modal-target="install-extension" class="step-button primary plausible-event-name=Install+Step2">"Get the extension"</a>
           </div>
         </div>
         <div class="card step-box white-blue-gradient">
@@ -45,7 +45,7 @@ block_component +directive installSteps where
           </div>
           {{ ← goB <| blocks[2]! }}
           <div class="buttons">
-            <a href="vscode://leanprover.lean4/setup-guide" data-modal-target="open-setup-guide" class="setup-guide-button step-button primary">"Open setup guide"</a>
+            <a href="vscode://leanprover.lean4/setup-guide" data-modal-target="open-setup-guide" class="setup-guide-button step-button primary plausible-event-name=Install+Step3">"Open setup guide"</a>
           </div>
         </div>
       </div>
