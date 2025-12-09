@@ -128,7 +128,7 @@ def head (siteName : String) (config : HeadConfig) (variables : ThemeConfig) (so
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
       {{
-        if page == []
+        if page == .root
           then {{ <title> "Lean enables correct, maintainable, and formally verified code" </title> }}
           else {{ <title>{{ title }} s!" — {siteName} "</title> }}
       }}

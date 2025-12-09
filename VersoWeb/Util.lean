@@ -21,7 +21,7 @@ def getDirLinks : TemplateM (Array (Bool × Option String × Html)) := do
   let pages := (← read).site
   let cur ← currentPath
 
-  let isFroSubPage := cur.length > 1 && cur[0]! == "fro"
+  let isFroSubPage := cur.size > 1 && cur[0]! == "fro"
 
   match pages with
   | .page _ _ subs =>
