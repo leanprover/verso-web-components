@@ -9,7 +9,7 @@ import VersoWeb.Components.ArchiveEntry
 import VersoWeb.Components.Aside
 
 open Verso Genre Blog Template Output Html
-open Verso.Web Components Util
+open Verso.Web Components Util Multi
 
 namespace Verso.Web.Theme
 
@@ -18,7 +18,7 @@ Configuration for blog post rendering.
 -/
 structure PostConfig where
   /-- Determines if content should use special styling -/
-  hasSpecialStyling : List String → Option String := fun _ => none
+  hasSpecialStyling : Path → Option String := fun _ => none
 
 /--
 Render article content with optional metadata.
@@ -59,7 +59,7 @@ def postTemplate (config : PostConfig) : Template := do
   let metadata ← param? "metadata"
   let title ← param "title"
   let path ← currentPath
-  let nav := collectH1 content ("/" ++ String.intercalate "/" path)
+  let nav := collectH1 content path.link
 
   let containerClass := s!"container {config.hasSpecialStyling path |>.map (" " ++ ·) |>.getD ""}"
 

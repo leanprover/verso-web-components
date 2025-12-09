@@ -11,7 +11,7 @@ import VersoWeb.Theme.Post
 import VersoWeb.Theme.Primary
 
 open Verso Genre Blog Template Output Html
-open Verso.Web Components Util
+open Verso.Web Components Util Multi
 
 namespace Verso.Web.Theme
 
@@ -22,7 +22,7 @@ def markdownPageTemplate (layout : LayoutConfig) : TemplateM Html := do
   let content ← param "content"
   let title ← param "title"
   let path ← currentPath
-  let nav := collectH1 content ("/" ++ String.intercalate "/" path)
+  let nav := collectH1 content ("/" ++ path.relativeLink)
 
   let postPageContent := if nav.isSome ∧ layout.isIndexPage path then "post-grid" else "post-center"
   let sectionTitle := {{ <h1 class="page-title"> {{ ← param "title"}} </h1> }}

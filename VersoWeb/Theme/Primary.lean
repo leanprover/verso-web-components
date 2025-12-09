@@ -12,7 +12,7 @@ import VersoWeb.Theme.Head
 import VersoWeb.Theme.Css
 import VersoWeb.Theme.Post
 
-open Verso Genre Blog Template Output Html
+open Verso Genre Blog Template Output Html Multi
 open Verso.Web.Components
 
 namespace Verso.Web.Theme
@@ -34,32 +34,32 @@ structure LayoutConfig where
   /--
   Determines if a page should use markdown layout
   -/
-  isMarkdownPage : List String → Bool
+  isMarkdownPage : Path → Bool
 
   /--
   Determines if a page is an index/listing page
   -/
-  isIndexPage : List String → Bool
+  isIndexPage : Path → Bool
 
   /--
   Determines if a page needs a title section
   -/
-  needsTitle : List String → Bool
+  needsTitle : Path → Bool
 
   /--
   Determines if a page is a post page
   -/
-  isPagePost : List String → Bool
+  isPagePost : Path → Bool
 
   /--
   Determines if content should use special styling
   -/
-  hasSpecialStyling : List String → Option String := fun _ => none
+  hasSpecialStyling : Path → Option String := fun _ => none
 
   /--
   Custom rendering for post lists on specific pages
   -/
-  renderPostList : List String → Html → Html := fun _ html => html
+  renderPostList : Path → Html → Html := fun _ html => html
 
   /--
   Post Config
@@ -74,7 +74,7 @@ def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (navBar :
 
   return {{
     <html lang="en">
-      {{ ← head config.siteName config.headConfig config.variables config.socialMeta extraHead (if path == ["404"] then some "/" else none) }}
+      {{ ← head config.siteName config.headConfig config.variables config.socialMeta extraHead (if path == #["404"] then some "/" else none) }}
       <body>
         {{ ← Components.noJSBar }}
         <header class="site-header">

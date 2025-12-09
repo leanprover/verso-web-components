@@ -49,11 +49,11 @@ block_component gallery where
 
 private def keepAlphaNum (s : String) : String := Id.run do
   let mut out := ""
-  let mut iter := s.iter
-  while !iter.atEnd do
-    let c := iter.curr
+  let mut iter := s.startValidPos
+  while h : iter ≠ s.endValidPos do
+    let c := iter.get h
+    iter := iter.next h
     if c.isAlphanum then out := out.push c
-    iter := iter.next
   out
 
 open Output.Html in
