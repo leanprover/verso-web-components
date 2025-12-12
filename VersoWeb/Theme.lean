@@ -20,8 +20,8 @@ open Verso.Web Components
 /--
 The main theme of the lean-lang.org website.
 -/
-def theme (config : Verso.Web.Theme.SiteConfig) (layoutConfig : Verso.Web.Theme.LayoutConfig) (navBar : TemplateM NavBarConfig) (footer : TemplateM FooterConfig) : Theme where
-  primaryTemplate := Verso.Web.Theme.primaryTemplate config .empty navBar footer
+def theme (config : Verso.Web.Theme.SiteConfig) (layoutConfig : Verso.Web.Theme.LayoutConfig) (navBar : TemplateM NavBarConfig) (extraHead : Output.Html) (footer : TemplateM FooterConfig) : Theme where
+  primaryTemplate := Verso.Web.Theme.primaryTemplate config extraHead navBar footer
   pageTemplate := Verso.Web.Theme.pageTemplate layoutConfig
   postTemplate := Verso.Web.Theme.postTemplate layoutConfig.postConfig
   archiveEntryTemplate := Verso.Web.Theme.archiveEntry
