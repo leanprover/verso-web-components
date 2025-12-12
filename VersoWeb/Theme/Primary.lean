@@ -22,6 +22,7 @@ Configuration for site head/meta tags.
 -/
 structure SiteConfig where
   siteName : String
+  rootTitle : String
   socialMeta : SocialMeta
   headConfig : HeadConfig
   variables : ThemeConfig
@@ -74,7 +75,7 @@ def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (navBar :
 
   return {{
     <html lang="en">
-      {{ ← head config.siteName config.headConfig config.variables config.socialMeta extraHead (if path == #["404"] then some "/" else none) }}
+      {{ ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead (if path == #["404"] then some "/" else none) }}
       <body>
         {{ ← Components.noJSBar }}
         <header class="site-header">

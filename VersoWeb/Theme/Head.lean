@@ -116,7 +116,7 @@ def HeadConfig.toHtml (data : HeadConfig) : Html :=
 /--
 Builds the HTML for the head of a page.
 -/
-def head (siteName : String) (config : HeadConfig) (variables : ThemeConfig) (social : Option SocialMeta := none) (extraHead : Html := .empty) (base : Option String := none) : TemplateM Html := do
+def head (siteName : String) (rootTitle : String) (config : HeadConfig) (variables : ThemeConfig) (social : Option SocialMeta := none) (extraHead : Html := .empty) (base : Option String := none) : TemplateM Html := do
   let title ← param (α := String) "title"
   let page ← currentPath
 
@@ -129,7 +129,7 @@ def head (siteName : String) (config : HeadConfig) (variables : ThemeConfig) (so
 
       {{
         if page == .root
-          then {{ <title> "Lean enables correct, maintainable, and formally verified code" </title> }}
+          then {{ <title> {{ rootTitle }} </title> }}
           else {{ <title>{{ title }} s!" — {siteName} "</title> }}
       }}
 
@@ -142,7 +142,6 @@ def head (siteName : String) (config : HeadConfig) (variables : ThemeConfig) (so
 
       <style> {{ .text false (variables.toCSS) }} </style>
       <script src="/static/js/dark.js"/>
-      <script data-domain="lean-lang.org" src="https://plausible.io/js/script.outbound-links.js" defer="defer"></script>
 
       <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
       <link rel="stylesheet" href="/static/css/reset.css"/>
@@ -151,7 +150,6 @@ def head (siteName : String) (config : HeadConfig) (variables : ThemeConfig) (so
       <link rel="stylesheet" href="/static/css/footer.css"/>
       <link rel="stylesheet" href="/static/css/theme.css"/>
       <link rel="stylesheet" href="/static/css/article.css"/>
-
       <link rel="stylesheet" href="/static/style/card.css"/>
 
       {{ extraHead }}
