@@ -26,8 +26,8 @@ def diff : DirectiveExpander
       | throwErrorAt pre "Expected undecorated code block"
     let some postStr := codeblockContents post
       | throwErrorAt pre "Expected undecorated code block"
-    let preLines ← preStr.dropRightWhile (· == '\n') |>.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
-    let postLines ← postStr.dropRightWhile (· == '\n') |>.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
+    let preLines ← preStr.dropEndWhile (· == '\n') |>.copy.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
+    let postLines ← postStr.dropEndWhile (· == '\n') |>.copy.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
     pure #[← ``(Block.other (BlockExt.htmlDiv "diff-view") #[
       Block.other (BlockExt.htmlDiv "del") #[$preLines,*],
       Block.other (BlockExt.htmlDiv "ins") #[$postLines,*]])]
@@ -45,12 +45,12 @@ def diffs : DirectiveExpander
 where
   doBlock : Syntax → DocElabM (String × Array (TSyntax `term))
     | `(block|```|$contents```) => do
-      let lines ← contents.getString.dropRightWhile (· == '\n') |>.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
+      let lines ← contents.getString.dropEndWhile (· == '\n') |>.copy.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
       pure ("plain", lines)
     | `(block|```$nameStx|$contents```) => do
       let cls := nameStx.getId.toString
       if cls ∉ ["ins", "del"] then throwErrorAt nameStx "Expected 'ins' or 'del'"
-      let lines ← contents.getString.dropRightWhile (· == '\n') |>.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
+      let lines ← contents.getString.dropEndWhile (· == '\n') |>.copy.splitOn "\n" |>.toArray.mapM fun l => `(Block.code $(quote l))
       pure (cls, lines)
     | blk => dbg_trace blk; throwErrorAt blk "Expected code block (unnamed, or with 'ins' or 'del')"
 
