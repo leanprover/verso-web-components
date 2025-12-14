@@ -49,8 +49,8 @@ block_component gallery where
 
 private def keepAlphaNum (s : String) : String := Id.run do
   let mut out := ""
-  let mut iter := s.startValidPos
-  while h : iter ≠ s.endValidPos do
+  let mut iter := s.startPos
+  while h : iter ≠ s.endPos do
     let c := iter.get h
     iter := iter.next h
     if c.isAlphanum then out := out.push c
@@ -79,7 +79,7 @@ Translates an item of a description list into a gallery item component.
 private def getItem (name : String) : Syntax → DocElabM (TSyntax `term)
   | `(desc_item|: $dts* => $dds*) => do
     let #[img] := dts.filter fun
-        | `(inline|$s:str) => s.getString.any (!·.isWhitespace)
+        | `(inline|$s:str) => s.getString.any (fun c : Char => !c.isWhitespace)
         | _ => true
       | throwErrorAt (mkNullNode dts.raw) "Expected a single image, got {dts}"
     let `(inline|image($title)$dest) := img
