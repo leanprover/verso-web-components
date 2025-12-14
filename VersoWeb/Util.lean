@@ -112,7 +112,7 @@ Truncate HTML text content to a maximum length, adding "..." if truncated.
         let newAcc := if acc.isEmpty then word else acc ++ " " ++ word
         if newAcc.length > maxLength
           then if acc.isEmpty
-            then word.take maxLength
+            then (word.take maxLength).copy
             else acc ++ "..."
         else buildResult newAcc rest
     let truncatedText := buildResult "" words
@@ -205,7 +205,7 @@ defmethod Html.classNames (html : Html) : Array  String :=
         if k == "class" then
           -- Split class string by whitespace and add each class
           v.splitOn.foldl (fun acc cls =>
-            let trimmed := cls.trim
+            let trimmed := cls.trimAscii.copy
             if trimmed.isEmpty then acc else acc.insert trimmed
           ) acc
         else acc
