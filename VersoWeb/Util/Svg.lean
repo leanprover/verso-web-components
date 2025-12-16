@@ -13,8 +13,13 @@ open Lean Elab Term IO Meta PrettyPrinter Delaborator SubExpr
 
 syntax "svg(" str ")" : term
 
-elab "svg(" filePath: str ")" : term => do
-  let content ← FS.readFile filePath.getString
+elab "svg(" filePath:str ")" : term => do
+  let ctx ← readThe Lean.Core.Context
+  let srcPath := System.FilePath.mk ctx.fileName
+  let some srcDir := srcPath.parent
+    | throwError "cannot compute parent directory of `{srcPath}`"
+  let svgPath := srcDir / filePath.getString
+  let content ← FS.readFile svgPath
   let env ← getEnv
 
   let .ok stx := Parser.runParserCategory env `html content

@@ -129,22 +129,22 @@ def withFontSize (fontSize : String) (icon : Icon) : Icon :=
 
 def github (width : String := "25") : Icon where
   name := "GitHub"
-  renderType := .svg (svg("./static/svg/github.svg"))
+  renderType := .svg (svg("../../static/svg/github.svg"))
   width := some width
 
 def moon (width : String := "25") : Icon where
   name := "Moon"
-  renderType := .svg (svg("./static/svg/moon-outline.svg"))
+  renderType := .svg (svg("../../static/svg/moon-outline.svg"))
   width := some width
 
 def search (width : String := "25") : Icon where
   name := "Search"
-  renderType := .svg (svg("./static/svg/search-outline.svg"))
+  renderType := .svg (svg("../../static/svg/search-outline.svg"))
   width := some width
 
 def cog (fill : String := "#5185F4") (width : String := "28") (height : String := "28") : Icon where
   name := "Settings"
-  renderType := .svg (svg("./static/svg/cog-outline.svg"))
+  renderType := .svg (svg("../../static/svg/cog-outline.svg"))
   width := some width
   height := some height
   fill := some fill
@@ -154,21 +154,21 @@ def cog (fill : String := "#5185F4") (width : String := "28") (height : String :
 
 def arrowForward (width : String := "20") (fill : Option String := none) : Icon where
   name := "Arrow Forward"
-  renderType := .svg (svg("./static/svg/arrow-forward.svg"))
+  renderType := .svg (svg("../../static/svg/arrow-forward.svg"))
   width := some width
   fill := fill
   defaultWidth := "20"
 
 def arrowRight (width : String := "20") (fill : Option String := none) : Icon where
   name := "Arrow Right"
-  renderType := .svg (svg("./static/svg/arrow-right-outline.svg"))
+  renderType := .svg (svg("../../static/svg/arrow-right-outline.svg"))
   width := some width
   fill := fill
   defaultWidth := "20"
 
 def book (fill : String := "white") (size : Option Nat := none) : Icon where
   name := "Book"
-  renderType := .svg (svg("./static/svg/book-outline.svg"))
+  renderType := .svg (svg("../../static/svg/book-outline.svg"))
   width := size.map toString
   height := size.map toString
   fill := some fill
@@ -176,14 +176,14 @@ def book (fill : String := "white") (size : Option Nat := none) : Icon where
 
 def triangle (width : String := "25") (fill : String := "#5185F4") : Icon where
   name := "Triangle"
-  renderType := .svg (svg("./static/svg/arrowhead-right.svg"))
+  renderType := .svg (svg("../../static/svg/arrowhead-right.svg"))
   width := some width
   fill := some fill
   defaultFill := some "#5185F4"
 
 def external (width : String := "20") : Icon where
   name := "External"
-  renderType := .svg (svg("./static/svg/external-link-outline.svg"))
+  renderType := .svg (svg("../../static/svg/external-link-outline.svg"))
   width := some width
   defaultWidth := "20"
 
@@ -192,7 +192,7 @@ def externalLink :=
 
 def forallSymbol (size : Option Nat := none) (fill : String := "white") : Icon where
   name := "For all"
-  renderType := .svg (svg("./static/svg/forall.svg"))
+  renderType := .svg (svg("../../static/svg/forall.svg"))
   width := size.map toString
   height := size.map toString
   fill := some fill
@@ -200,7 +200,7 @@ def forallSymbol (size : Option Nat := none) (fill : String := "white") : Icon w
 
 def lambdaSymbol (size : Option Nat := none) (fill : String := "white") : Icon where
   name := "Lambda"
-  renderType := .svg (svg("./static/svg/lambda.svg"))
+  renderType := .svg (svg("../../static/svg/lambda.svg"))
   width := size.map toString
   height := size.map toString
   fill := some fill
@@ -208,65 +208,65 @@ def lambdaSymbol (size : Option Nat := none) (fill : String := "white") : Icon w
 
 def globe (width : String := "25") (fill : String := "#5185F4") : Icon where
   name := "Globe"
-  renderType := .svg (svg("./static/svg/globe-outline.svg"))
+  renderType := .svg (svg("../../static/svg/globe-outline.svg"))
   width := some width
   fill := some fill
   defaultFill := some "#5185F4"
 
 def team (width : String := "25") : Icon where
   name := "Team"
-  renderType := .img "./static/svg/employees.svg"
+  renderType := .img "../../static/svg/employees.svg"
   width := some width
 
 def handShake (width : String := "25") : Icon where
   name := "Handshake"
-  renderType := .img "./static/svg/handshake.svg"
+  renderType := .img "../../static/svg/handshake.svg"
   width := some width
 
 def rocket (width : String := "25") : Icon where
   name := "Rocket"
-  renderType := .img "./static/svg/rocket-launch.svg"
+  renderType := .img "../../static/svg/rocket-launch.svg"
   width := some width
 
 def githubLogo (width : String := "20") : Icon where
   name := "GitHub"
-  renderType := .img "./static/svg/github-white.svg"
+  renderType := .img "../../static/svg/github-white.svg"
   width := some width
   defaultWidth := "20"
 
 def blueskyLogo (width : String := "20") : Icon where
   name := "Bluesky"
-  renderType := .svg (svg("./static/svg/bluesky-white.svg"))
+  renderType := .svg (svg("../../static/svg/bluesky-white.svg"))
   width := some width
   defaultWidth := "20"
 
 def linkedinLogo (width : String := "20") : Icon where
   name := "LinkedIn"
-  renderType := .img "./static/svg/linkedin-white.png"
+  renderType := .img "../../static/svg/linkedin-white.png"
   width := some width
   defaultWidth := "20"
 
 def mastodonLogo (width : String := "20") : Icon where
   name := "Mastodon"
-  renderType := .svg (svg("./static/svg/mastodon-white.svg"))
+  renderType := .svg (svg("../../static/svg/mastodon-white.svg"))
   width := some width
   defaultWidth := "20"
 
 def xLogo (width : String := "20") : Icon where
   name := "X"
-  renderType := .svg (svg("./static/svg/x-white.svg"))
+  renderType := .svg (svg("../../static/svg/x-white.svg"))
   width := some width
   defaultWidth := "20"
 
 def zulipLogo (width : String := "20") : Icon where
   name := "Zulip"
-  renderType := .svg (svg("./static/svg/zulip-white.svg"))
+  renderType := .svg (svg("../../static/svg/zulip-white.svg"))
   width := some width
   defaultWidth := "20"
 
 def leanLogo (fill : String := "#000") (width : Option Nat := none) (height : Option Nat := none) (strokeWidth : Nat := 4) : Icon where
   name := "Lean Logo"
-  renderType := .styledSvg (svg("./static/svg/lean-logo-main.svg")) none
+  renderType := .styledSvg (svg("../../static/svg/lean-logo-main.svg")) none
   width := width.map toString
   height := height.map toString
   fill := some fill
@@ -276,7 +276,7 @@ def leanLogo (fill : String := "#000") (width : Option Nat := none) (height : Op
 
 def froLogo (fill : String := "#000") (width : Option Nat := none) (height : Option Nat := none) (strokeWidth : Nat := 4) : Icon where
   name := "FRO Logo"
-  renderType := .styledSvg (svg("./static/svg/fro.svg")) (some "-60 0 385 169")
+  renderType := .styledSvg (svg("../../static/svg/fro.svg")) (some "-60 0 385 169")
   width := width.map toString
   height := height.map toString
   fill := some fill
