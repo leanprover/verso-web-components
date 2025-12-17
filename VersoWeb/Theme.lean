@@ -11,6 +11,7 @@ import VersoWeb.Theme.Primary
 import VersoWeb.Theme.Post
 import VersoWeb.Theme.Page
 import VersoWeb.Theme.Css
+import VersoWeb.Theme.Static
 
 namespace Verso.Web
 
