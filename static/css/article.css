@@ -247,8 +247,8 @@
     transform: scale(1.02);
 }
 
-.markdown-body code,
-.post-content code {
+.markdown-body code:not(h1 code, h2 code, h3 code, h4 code, h5 code, h6 code),
+.post-content code:not(h1 code, h2 code, h3 code, h4 code, h5 code, h6 code) {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 8px;

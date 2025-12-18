@@ -141,16 +141,16 @@ def head (siteName : String) (rootTitle : String) (config : HeadConfig) (variabl
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oranienbaum&display=swap" />
 
       <style> {{ .text false (variables.toCSS) }} </style>
-      <script src="/static/js/dark.js"/>
+      <script src="-verso-data/dark.js"/>
 
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-      <link rel="stylesheet" href="/static/css/reset.css"/>
-      <link rel="stylesheet" href="/static/css/layout.css"/>
-      <link rel="stylesheet" href="/static/css/navbar.css"/>
-      <link rel="stylesheet" href="/static/css/footer.css"/>
-      <link rel="stylesheet" href="/static/css/theme.css"/>
-      <link rel="stylesheet" href="/static/css/article.css"/>
-      <link rel="stylesheet" href="/static/style/card.css"/>
+      <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+      <link rel="stylesheet" href="-verso-data/reset.css"/>
+      <link rel="stylesheet" href="-verso-data/layout.css"/>
+      <link rel="stylesheet" href="-verso-data/navbar.css"/>
+      <link rel="stylesheet" href="-verso-data/footer.css"/>
+      <link rel="stylesheet" href="-verso-data/theme.css"/>
+      <link rel="stylesheet" href="-verso-data/article.css"/>
+      <link rel="stylesheet" href="-verso-data/card.css"/>
 
       {{ extraHead }}
       {{ ← builtinHeader }}

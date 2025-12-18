@@ -18,3 +18,34 @@ span.doc-comment.token {
 .dark-theme .white-blue-gradient {
     background: linear-gradient(130deg, #1a1c20 0%, #20232a 40%, #2a2f38 100%);
 }
+
+.hl.lean .tactic-state {
+    background: var(--color-white) !important;
+    color: var(--color-text) !important;
+}
+
+.dark-theme .hl.lean .token.binding-hl,
+.hl.lean .literal.string:hover,
+.hl.lean .token.typed:hover {
+    background: #c5c5c521 !important;
+}
+
+.tippy-content {
+    background: var(--color-white);
+    color: var(--color-text) !important;
+    border: 1px solid var(--color-border);
+}
+
+.hl.lean .hover-info code {
+    color: var(--color-text) !important;
+}
+
+.tippy-box[data-theme~='lean'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: #ff0000;
+}
+
+@media (hover: hover) {
+  .dark-theme .hl.lean .tactic:has(.tactic-toggle:not(:checked)) > label:hover {
+    background-color: #444;
+  }
+}
