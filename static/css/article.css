@@ -247,6 +247,10 @@
     transform: scale(1.02);
 }
 
+code {
+    font-family: 'Fira Code', 'SF Mono', Monaco, monospace;
+}
+
 .markdown-body p code:not(.math),
 .markdown-body td code:not(.math),
 .markdown-body th code:not(.math),
