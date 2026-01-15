@@ -27,5 +27,7 @@ def theme (config : Verso.Web.Theme.SiteConfig) (layoutConfig : Verso.Web.Theme.
   postTemplate := Verso.Web.Theme.postTemplate layoutConfig.postConfig
   archiveEntryTemplate := Verso.Web.Theme.archiveEntry
   categoryTemplate := Verso.Web.Theme.categoryTemplate
+  cssFiles := Verso.Web.Theme.Static.allCSS
+  jsFiles := Verso.Web.Theme.Static.allJS.map (fun x => (x.1, x.2, false))
 
 end Verso.Web
