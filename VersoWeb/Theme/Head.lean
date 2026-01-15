@@ -122,9 +122,9 @@ def head (siteName : String) (rootTitle : String) (config : HeadConfig) (variabl
 
   return {{
     <head>
-      {{ base.map ({{ <base href={{·}} /> }}) }}
-
       <meta charset="UTF-8"/>
+      {{ ← builtinHeader }}
+
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
       {{
@@ -141,19 +141,11 @@ def head (siteName : String) (rootTitle : String) (config : HeadConfig) (variabl
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oranienbaum&display=swap" />
 
       <style> {{ .text false (variables.toCSS) }} </style>
-      <script src="-verso-data/dark.js"/>
 
       <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-      <link rel="stylesheet" href="-verso-data/reset.css"/>
-      <link rel="stylesheet" href="-verso-data/layout.css"/>
-      <link rel="stylesheet" href="-verso-data/navbar.css"/>
-      <link rel="stylesheet" href="-verso-data/footer.css"/>
-      <link rel="stylesheet" href="-verso-data/theme.css"/>
-      <link rel="stylesheet" href="-verso-data/article.css"/>
-      <link rel="stylesheet" href="-verso-data/card.css"/>
 
       {{ extraHead }}
-      {{ ← builtinHeader }}
+
 
     </head>
   }}
