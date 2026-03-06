@@ -54,14 +54,12 @@ function updateFaviconForSystemTheme(systemTheme) {
   setFavicon(iconPath);
 }
 
-function registerTheme() {
+function applyInitialTheme() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
   const currentSystemTheme = mediaQuery.matches ? 'dark' : 'light';
 
   const storedSystemTheme = getStored('theme-system');
   const storedLocalTheme = getStored('theme-local');
-
-  updateFaviconForSystemTheme(currentSystemTheme);
 
   if (storedSystemTheme !== currentSystemTheme) {
     if (!storedLocalTheme || storedLocalTheme === storedSystemTheme) {
@@ -74,6 +72,11 @@ function registerTheme() {
     applyTheme(storedLocalTheme || currentSystemTheme);
   }
 
+  return mediaQuery;
+}
+
+function registerThemeUI(mediaQuery) {
+  updateFaviconForSystemTheme(mediaQuery.matches ? 'dark' : 'light');
   setInput();
 
   const themeToggleBtns = document.querySelectorAll('.change-theme');
@@ -104,6 +107,8 @@ function registerTheme() {
   });
 }
 
+const themeMediaQuery = applyInitialTheme();
+
 window.addEventListener('DOMContentLoaded', () => {
-  registerTheme();
-})
+  registerThemeUI(themeMediaQuery);
+});

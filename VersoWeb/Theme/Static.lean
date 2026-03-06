@@ -36,6 +36,6 @@ def allCSS := #[
 
 def allJS := #[
   ("dark.js", dark.js),
-  ("copy.js", copy.js),
   ("theme.js", theme.js),
+  ("copy.js", copy.js),
 ]
