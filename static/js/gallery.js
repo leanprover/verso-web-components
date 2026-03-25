@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         content: "Opens the current code in the playground!",
     });
 
+    tippy('.social-icon', {
+        placement: 'top',
+    });
+
 });
 
 function observeUntilVisible(element, callback) {

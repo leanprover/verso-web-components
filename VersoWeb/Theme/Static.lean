@@ -12,16 +12,15 @@ def layout.css := include_str "../../static/css/layout.css"
 
 def navbar.css := include_str "../../static/css/navbar.css"
 
-def footer.css := include_str "../../static/css/footer.css"
-
 def theme.css := include_str "../../static/css/theme.css"
+
+def footer.css := include_str "../../static/css/footer.css"
 
 def article.css := include_str "../../static/css/article.css"
 
 def card.css := include_str "../../static/style/card.css"
 
 def «copy-button».css := include_str "../../static/style/copy-button.css"
-
 
 def allCSS := #[
   ("reset.css", reset.css),

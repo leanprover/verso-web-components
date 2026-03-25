@@ -9,10 +9,27 @@ open Verso Genre Blog Lean Output Html Template
 
 namespace Verso.Web.Components
 
+structure Social where
+  icon : Html
+  label : String
+  url : String
+
 structure Member where
   url : String
   name : String
   role : String
+  socials : List Social := []
+
+def renderSocials (socials : List Social) : Html :=
+  {{
+    <div class="social-links">
+      {{socials.map fun s =>
+        {{ <a href={{s.url}} target="_blank" class="social-icon" data-tippy-theme="lean" data-tippy-content={{s.label}}>
+            {{ s.icon }}
+          </a> }}
+      }}
+    </div>
+  }}
 
 def team (teamMembemr : Member) : HtmlM Page Html := do
   saveCss (include_str "../../static/style/team.css")
@@ -27,6 +44,8 @@ def team (teamMembemr : Member) : HtmlM Page Html := do
                 <h3 class="member-name">{{teamMembemr.name}}</h3>
                 <p class="member-role">{{teamMembemr.role}}</p>
             </div>
+
+            {{ renderSocials teamMembemr.socials }}
         </div>
     </div>
   }}
