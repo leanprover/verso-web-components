@@ -133,15 +133,31 @@ def createSlug (str : String) : String :=
   str.toLower.replace " " "-"
 
 /--
-Add ID slugs to heading elements for navigation.
+Add ID slugs to heading elements for navigation, with permalink widgets on h2–h4.
+`page` must be the absolute path of the current page (e.g. `"/faq/"`) so that
+the permalink href resolves correctly against the Verso `<base>` tag.
 -/
-partial def addSlug : Html → Html
+partial def addSlug (page : String) : Html → Html
+  | .seq h => .seq (h.map (addSlug page))
   | .text s e => .text s e
   | .tag t a h =>
+    let findId (attrs : Array (String × String)) := (attrs.find? (·.1 == "id")).map (·.2)
+    let theresId (attrs : Array (String × String)) := attrs.any (·.1 == "id")
+
     match t with
-    | "h1" | "h2" | "h3" | "h4" => .tag t (a.push ("id", createSlug (removeWrapper h))) h
-    | _ => .tag t a (addSlug h)
-  | .seq h => .seq (h.map addSlug)
+    | "h1" =>
+      let slug := findId a |>.getD (createSlug (removeWrapper h))
+      let finalAttrs := if theresId a then a else a.push ("id", slug)
+      .tag "h1" finalAttrs h
+    | "h2" | "h3" | "h4" =>
+      let slug := findId a |>.getD (createSlug (removeWrapper h))
+      let finalAttrs := if theresId a then a else a.push ("id", slug)
+      let anchor := Html.tag "a" #[("href", s!"{page}#{slug}"), ("title", "Permalink")] #[Html.text false "🔗"]
+      let widget := Html.tag "span" #[("class", "permalink-widget inline")] #[anchor]
+
+      .tag t finalAttrs (.seq #[h, widget])
+    | _ =>
+      .tag t a (addSlug page h)
 
 /--
 Collect H1-H4 headings and build a table of contents.

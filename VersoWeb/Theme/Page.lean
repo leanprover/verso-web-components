@@ -40,7 +40,7 @@ def markdownPageTemplate (layout : LayoutConfig) : TemplateM Html := do
           <div class="post-content">
             {{ if layout.needsTitle path then sectionTitle else .empty }}
             {{ postList }}
-            {{ addSlug content }}
+            {{ addSlug path.link content }}
           </div>
         </article>
         {{ aside }}

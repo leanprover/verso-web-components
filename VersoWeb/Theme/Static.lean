@@ -8,11 +8,11 @@ def copy.js := include_str "../../static/js/copy.js"
 
 def reset.css := include_str "../../static/css/reset.css"
 
-def layout.css := include_str "../../static/css/layout.css"
-
 def navbar.css := include_str "../../static/css/navbar.css"
 
 def theme.css := include_str "../../static/css/theme.css"
+
+def layout.css := include_str "../../static/css/layout.css"
 
 def footer.css := include_str "../../static/css/footer.css"
 

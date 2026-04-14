@@ -151,25 +151,25 @@
     font-weight: bold;
 }
 
-.post-content a:not(:is(.custom-content a)) {
+.post-content a:not(:is(.custom-content a)):not(:is(.permalink-widget a)) {
     color: var(--color-primary);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     background: linear-gradient(transparent 80%, rgba(56, 110, 224, 0.1) 80%);
 }
 
-.dark-theme .post-content a:not(:is(.custom-content a)),
+.dark-theme .post-content a:not(:is(.custom-content a)):not(:is(.permalink-widget a)),
 .metadata .categories a {
     color: var(--color-primary-light);
     background: linear-gradient(transparent 80%, rgba(107, 164, 255, 0.1) 80%);
 }
 
-.post-content a:not(:is(.custom-content a)):hover {
+.post-content a:not(:is(.custom-content a)):not(:is(.permalink-widget a)):hover {
     border-bottom-color: currentColor;
     background: linear-gradient(transparent 70%, rgba(56, 110, 224, 0.2) 70%);
 }
 
-.dark-theme .post-content a:not(:is(.custom-content a)):hover,
+.dark-theme .post-content a:not(:is(.custom-content a)):not(:is(.permalink-widget a)):hover,
 .metadata .categories a:hover {
     background: linear-gradient(transparent 70%, rgba(107, 164, 255, 0.2) 70%);
 }
@@ -568,4 +568,37 @@ code {
 
 .markdown-page .post-container {
     gap: 30px
+}
+
+/******** Permalink widgets ********/
+
+.permalink-widget.inline {
+    opacity: 0;
+    text-decoration: none;
+    font-size: 50%;
+    vertical-align: 10%;
+    margin-left: 0.5rem;
+    width: 0;
+    position: relative;
+    transition: opacity 0.2s ease;
+}
+
+.permalink-widget.inline > a {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+:hover > .permalink-widget.inline {
+    opacity: 1;
+}
+
+.permalink-widget > a {
+    color: transparent;
+    text-shadow: 0 0 0 gray;
+    text-decoration: none;
+}
+
+.permalink-widget > a:hover {
+    text-decoration: none;
 }
