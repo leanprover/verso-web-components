@@ -152,10 +152,13 @@ partial def addSlug (page : String) : Html → Html
     | "h2" | "h3" | "h4" =>
       let slug := findId a |>.getD (createSlug (removeWrapper h))
       let finalAttrs := if theresId a then a else a.push ("id", slug)
-      let anchor := Html.tag "a" #[("href", s!"{page}#{slug}"), ("title", "Permalink")] #[Html.text false "🔗"]
-      let widget := Html.tag "span" #[("class", "permalink-widget inline")] #[anchor]
-
-      .tag t finalAttrs (.seq #[h, widget])
+      let hasNoPermalink := a.any (fun (k, v) => k == "class" && v.splitOn.any (· == "no-permalink"))
+      if hasNoPermalink then
+        .tag t finalAttrs h
+      else
+        let anchor := Html.tag "a" #[("href", s!"{page}#{slug}"), ("title", "Permalink")] #[Html.text false "🔗"]
+        let widget := Html.tag "span" #[("class", "permalink-widget inline")] #[anchor]
+        .tag t finalAttrs (.seq #[h, widget])
     | _ =>
       .tag t a (addSlug page h)
 
