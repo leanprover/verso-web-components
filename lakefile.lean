@@ -11,5 +11,11 @@ package versowebcomponents where
       #["-Wl,-ignore_optimization_hints"]
     else #[]
 
+input_dir static where
+  path := "static/"
+  text := true
+  filter := .extension (#["css", "js", "svg"].contains ·)
+
 @[default_target]
 lean_lib VersoWeb where
+  needs := #[`@/static]
