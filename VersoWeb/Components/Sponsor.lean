@@ -29,6 +29,10 @@ def render [MonadStateOf Component.State m] [Monad m] (s : Sponsor) : m Html := 
       </a>
     }}
   else
-    return {{ <img src={{s.logo}} alt=s!"{s.name} logo" class="sponsor-logo" /> }}
+    return {{
+      <div class="sponsor">
+        <img src={{s.logo}} alt=s!"{s.name} logo" class="sponsor-logo" />
+      </div>
+    }}
 
 end Verso.Web.Components.Sponsor
