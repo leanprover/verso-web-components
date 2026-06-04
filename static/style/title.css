@@ -56,13 +56,13 @@
 }
 
 .page-title {
-    font-size: 2.5rem !important;
-    margin-top: 4rem;
-    font-weight: bold;
+    font-size: 2.2rem !important;
+    font-weight: 700;
     text-align: left;
     padding: 0px !important;
-    margin: 0px !important;
+    margin: 0px 0px var(--space-2) !important;
 }
+
 
 @media (max-width: 768px) {
     .heading-title {

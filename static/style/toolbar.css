@@ -15,17 +15,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
     padding: 10px 30px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
     flex: 1;
     background: var(--card-bg) !important;
     border: 1px solid var(--color-border) !important;
     color: var(--color-text) !important;
-    gap: 10px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition:
+        border-color var(--transition-base),
+        box-shadow var(--transition-base),
+        transform var(--transition-fast);
+}
+
+.btn:hover {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 4px 20px rgba(81, 133, 244, 0.1);
+    transform: translateY(-2px);
 }

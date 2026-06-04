@@ -11,6 +11,10 @@
     transition: all var(--transition-base);
 }
 
+.button:hover {
+    --reveal-delay: 0s;
+}
+
 a.primary {
     background: var(--color-primary);
     color: var(--color-text-contrast);
@@ -38,14 +42,17 @@ a.primary:focus {
     color: var(--color-primary);
 }
 
+.secondary svg {
+    fill: var(--color-primary);
+}
+
 .secondary:hover {
-    background: var(--color-primary);
-    fill: var(--color-text-contrast);
-    color: var(--color-text-contrast);
+    background: rgba(56, 110, 224, 0.07);
+    color: var(--color-primary);
 }
 
 .secondary:hover svg {
-    fill: var(--color-text-contrast);
+    fill: var(--color-primary);
 }
 
 .primary.inverted {

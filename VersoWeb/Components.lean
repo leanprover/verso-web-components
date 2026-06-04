@@ -5,7 +5,7 @@ Author: Sofia Rodrigues
 -/
 import VersoWeb.Components.Button.ReadMore
 import VersoWeb.Components.Card.Game
-import VersoWeb.Components.Card.Learn
+import VersoWeb.Components.Card.Resource
 import VersoWeb.Components.Pattern.Grid
 import VersoWeb.Components.Pattern.Topography
 import VersoWeb.Components.Accordion
@@ -23,8 +23,8 @@ import VersoWeb.Components.Modal
 import VersoWeb.Components.NavBar
 import VersoWeb.Components.NoJs
 import VersoWeb.Components.Sponsor
-import VersoWeb.Components.Steps
 import VersoWeb.Components.Tabs
 import VersoWeb.Components.Team
+import VersoWeb.Components.ReadingTime
 import VersoWeb.Components.Title
 import VersoWeb.Components.Toolbar
