@@ -5,7 +5,7 @@ Authors: Sofia Rodrigues
 -/
 import Verso.Doc.Html
 import VersoBlog
-import VersoWeb.Components.ArchiveEntry
+import VersoWeb.Components.Content.ArchiveEntry
 
 open Verso Genre Blog Template Output Html
 open Verso.Web.Components

@@ -17,7 +17,7 @@ namespace Button
 Render a complete archive entry
 -/
 def readMore [MonadStateOf Component.State m] [Monad m] (target : String) : m Html := do
-  saveCss (include_str "../../../static/style/read-more.css")
+  saveCss (include_str "../../../../static/style/read-more.css")
 
   return {{
     <a href={{target}} class="read-more">

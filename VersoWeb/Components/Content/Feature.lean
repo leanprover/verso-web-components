@@ -64,7 +64,7 @@ private def renderHeader (feature : Feature) : Html :=
 Render a complete feature card
 -/
 def render [MonadStateOf Component.State m] [Monad m] (feature : Feature) : m Html := do
-  saveCss (include_str "../../static/style/feature.css")
+  saveCss (include_str "../../../static/style/feature.css")
 
   return {{
     <article class="feature">
@@ -79,7 +79,7 @@ def render [MonadStateOf Component.State m] [Monad m] (feature : Feature) : m Ht
 Render multiple features
 -/
 def renderAll [MonadStateOf Component.State m] [Monad m] (features : Array Feature := defaults) : m Html := do
-  saveCss (include_str "../../static/style/feature.css")
+  saveCss (include_str "../../../static/style/feature.css")
 
   let featuresHtml ← features.mapM render
   return {{<div class="features-container">{{featuresHtml}}</div>}}

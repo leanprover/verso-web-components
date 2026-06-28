@@ -15,19 +15,19 @@ namespace Verso.Web.Components
 
 private def glightboxJs : String × String :=
   ("glightbox.min.js",
-   include_str("../../deps/glightbox/js/glightbox.min.js"))
+   include_str("../../../deps/glightbox/js/glightbox.min.js"))
 
 private def glightboxCss : String × String :=
   ("glightbox.css",
-   include_str("../../deps/glightbox/css/glightbox.css"))
+   include_str("../../../deps/glightbox/css/glightbox.css"))
 
 private def galleryJs : String × String :=
   ("gallery.js",
-   include_str("../../static/js/glightbox.js"))
+   include_str("../../../static/js/glightbox.js"))
 
 private def galleryCss : String × String :=
   ("gallery.css",
-   include_str("../../static/style/tabs.css"))
+   include_str("../../../static/style/tabs.css"))
 
 /--
 A screenshot gallery.

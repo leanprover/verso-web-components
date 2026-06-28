@@ -14,8 +14,8 @@ open Verso.Genre.Blog Template
 
 block_component +directive modal (id : String) where
   toHtml _ _ _ goB contents := do
-    saveCss (include_str "../../static/style/modal.css")
-    saveJs (include_str "../../static/js/modal.js")
+    saveCss (include_str "../../../static/style/modal.css")
+    saveJs (include_str "../../../static/js/modal.js")
 
     return {{
       <div id={{id}} class="modal-backdrop hidden" data-modal="">

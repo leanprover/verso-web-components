@@ -15,7 +15,7 @@ structure Tool where
   icon : Icon
 
 def toolbar [MonadStateOf Component.State m] [Monad m] (buttons : Array Tool) : m Html := do
-  saveCss (include_str "../../static/style/toolbar.css")
+  saveCss (include_str "../../../static/style/toolbar.css")
   return {{
     <div class="button-container">
     {{ buttons.map (fun btn => {{ <a class="btn" href={{btn.target}}>{{ btn.icon }} {{ btn.text }} </a> }}) }}

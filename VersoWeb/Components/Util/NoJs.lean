@@ -16,7 +16,7 @@ open Verso.Genre.Blog Template
 Bar to display a message when JavaScript is disabled.
 -/
 def noJSBar [MonadStateOf Component.State m] [Monad m] : m Html := do
-  saveCss (include_str "../../static/style/noJs.css")
+  saveCss (include_str "../../../static/style/noJs.css")
 
   return {{
     <noscript>

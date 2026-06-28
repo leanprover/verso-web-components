@@ -20,7 +20,7 @@ instance : ToString Button.Style where
     | .secondary => "secondary"
 
 def button [MonadStateOf Component.State m] [Monad m] (style : Button.Style) (href : String) (content : Html) (inverted : Bool := false) (classes : Array String := #[]) : m Html := do
-    saveCss (include_str "../../static/style/button.css")
+    saveCss (include_str "../../../static/style/button.css")
 
     let invertedClass :=  if inverted then " inverted" else ""
     let extraClasses := if classes.isEmpty then "" else " " ++ String.intercalate " " classes.toList

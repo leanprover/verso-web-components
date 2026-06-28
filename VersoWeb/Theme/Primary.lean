@@ -5,9 +5,9 @@ Authors: Sofia Rodrigues
 -/
 import Verso.Doc.Html
 import VersoBlog
-import VersoWeb.Components.NoJs
-import VersoWeb.Components.NavBar
-import VersoWeb.Components.Footer
+import VersoWeb.Components.Util.NoJs
+import VersoWeb.Components.Layout.NavBar
+import VersoWeb.Components.Layout.Footer
 import VersoWeb.Theme.Head
 import VersoWeb.Theme.Css
 import VersoWeb.Theme.Post

@@ -17,9 +17,9 @@ private def extractBlock : Block Page → Option String
 
 block_component codeGallery where
   toHtml _ _ _ goB content := do
-    saveCss (include_str "../../static/style/copy-button.css")
-    saveCss (include_str "../../static/style/code-gallery.css")
-    saveJs (include_str "../../static/js/code-block.js")
+    saveCss (include_str "../../../static/style/copy-button.css")
+    saveCss (include_str "../../../static/style/code-gallery.css")
+    saveJs (include_str "../../../static/js/code-block.js")
 
     let chunks := content.chunk 4
 

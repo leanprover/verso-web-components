@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Sofia Rodrigues
 -/
 import Verso.Doc.Html
-import VersoWeb.Components.Button.ReadMore
+import VersoWeb.Components.Interactive.Button.ReadMore
 import VersoWeb.Components.Icon
 import VersoWeb.Util
 
@@ -42,7 +42,7 @@ def archiveEntry [MonadStateOf Component.State m] [Monad m]
     (title : String)
     (summary : Option Html)
     (image : Option (String × String)) : m Html := do
-  saveCss (include_str "../../static/style/archive-entry.css")
+  saveCss (include_str "../../../static/style/archive-entry.css")
   return {{
     <li>
       {{renderArchiveImage image}}

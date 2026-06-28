@@ -269,16 +269,6 @@ def leanLogo (fill : String := "#000") (width : Option Nat := none) (height : Op
   defaultFill := some "#000"
   defaultStrokeWidth := some 4
 
-def froLogo (fill : String := "#000") (width : Option Nat := none) (height : Option Nat := none) (strokeWidth : Nat := 4) : Icon where
-  name := "FRO Logo"
-  renderType := .styledSvg (svg("../../static/svg/fro.svg")) (some "-60 0 385 169")
-  width := width.map toString
-  height := height.map toString
-  fill := some fill
-  strokeWidth := some strokeWidth
-  defaultFill := some "#000"
-  defaultStrokeWidth := some 4
-
 def textIcon (content : String := "?") (fill : String := "#386EE0") (fontSize : String := "40px") : Icon where
   name := content
   renderType := .text content

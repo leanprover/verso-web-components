@@ -174,6 +174,9 @@ Configuration for the sub-navigation bar.
 -/
 structure SubNavBarConfig where
   menuItems : Array NavBarItem
+  /-- Logo shown at the start of the sub-navigation bar. Provided by the consuming site so the
+  library stays free of site-specific branding. -/
+  logo : Html := .empty
 deriving Inhabited
 
 /--
@@ -188,9 +191,6 @@ namespace NavBar
 
 private def renderLogo : Html :=
   {{ <a class="nav-logo" href="/"> {{ Icon.leanLogo "#386EE0" (some 70) (some 20) (strokeWidth := 10) }} </a> }}
-
-private def renderFroLogo : Html :=
-  {{ <a class="nav-logo" href="/fro"> {{ Icon.froLogo "#386EE0" (some 70) (some 20) (strokeWidth := 10) }} </a> }}
 
 private def mobileGroupToggleId (label : String) : String :=
   let cleaned := label.foldl (fun s c => if c.isAlphanum then s.push c else s) ""
@@ -342,7 +342,7 @@ def renderSub [MonadStateOf Component.State m] [Monad m] (config : SubNavBarConf
   return {{
     <nav class="sub-navbar">
       <div class="navbar-container container">
-        {{ renderFroLogo }}
+        {{ config.logo }}
         <ul class="nav-list">
           {{ config.menuItems.map renderItem }}
         </ul>

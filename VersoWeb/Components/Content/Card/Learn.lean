@@ -29,7 +29,7 @@ structure Card where
 deriving Repr
 
 def learnCard [MonadStateOf Component.State m] [Monad m]  (card : Card) : m Html := do
-  saveCss (include_str "../../../static/style/learn-card.css")
+  saveCss (include_str "../../../../static/style/learn-card.css")
   return {{
     <article class="learn-card-article">
       <a href={{ card.url }} class="card-href card main-learn-card">

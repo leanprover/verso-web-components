@@ -56,7 +56,7 @@ def selectorItem (id : String) (isActive : Bool) (idx : Nat) (content : String) 
   return html
 
 def selector (id : String) (lbl : String) (active : Nat) (options : Array String) : ComponentM Html := do
-  saveCss (include_str "../../static/style/selector.css")
+  saveCss (include_str "../../../static/style/selector.css")
 
   let ariaLabel := s!"{lbl} – {options.size} options"
 
@@ -82,8 +82,8 @@ def tabPanel (sectionId : String) (id : Nat) (active : Bool) (sameSize : Bool) (
     }}
 
 def tabs (name : String) (id : String) (label : String) (active : Nat) (sameSize : Bool) (tabClasses : String) (options : Array String) (contents : Array Html) : ComponentM Html := do
-  Template.saveCss (include_str "../../static/style/tabs.css")
-  Template.saveJs (include_str "../../static/js/gallery.js")
+  Template.saveCss (include_str "../../../static/style/tabs.css")
+  Template.saveJs (include_str "../../../static/js/gallery.js")
 
   let contents := contents.mapIdx fun idx x => tabPanel id idx (idx == active) sameSize tabClasses x
 

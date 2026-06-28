@@ -16,7 +16,7 @@ def badge (content : String) (variant : String := "primary") : Html :=
   {{ <span class=s!"badge-{variant}"> {{ content }} </span> }}
 
 def sectionTitle [MonadStateOf Component.State m] [Monad m] (tag : Option String) (title : String) (subtitle : Option Html) (variant : String := "primary") : m Html := do
-  saveCss (include_str "../../static/style/title.css")
+  saveCss (include_str "../../../static/style/title.css")
 
   return {{
     <div class="heading-section">
@@ -31,13 +31,13 @@ block_component +directive sectionTitle' (tagg : Option String) (title : String)
 
 block_component +directive pageTitle (level : Nat) (title : String) where
   toHtml _ _ _ _ _ := do
-    saveCss (include_str "../../static/style/title.css")
+    saveCss (include_str "../../../static/style/title.css")
 
     return Html.tag s!"h{level}" #[("class", "page-title")] (.text true title)
 
 block_component +directive header (level : Nat) (title : String) where
   toHtml _ _ _ _ _ := do
-    saveCss (include_str "../../static/style/title.css")
+    saveCss (include_str "../../../static/style/title.css")
 
     return Html.tag s!"h{level}" #[("id", defaultPostName.slugify title)] (.text true title)
 

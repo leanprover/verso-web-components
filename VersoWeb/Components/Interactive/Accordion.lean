@@ -15,7 +15,7 @@ open Verso.Genre.Blog Template
 block_component +directive accordion (active : Bool) where
   cssFiles := #[]
   toHtml _ _ _ goB blocks := do
-    saveCss (include_str "../../static/style/accordion.css")
+    saveCss (include_str "../../../static/style/accordion.css")
 
     let title ← goB blocks[0]!
 

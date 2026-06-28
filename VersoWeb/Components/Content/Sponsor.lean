@@ -20,7 +20,7 @@ structure Sponsor where
 namespace Sponsor
 
 def render [MonadStateOf Component.State m] [Monad m] (s : Sponsor) : m Html := do
- Template.saveCss (include_str "../../static/style/sponsor.css")
+ Template.saveCss (include_str "../../../static/style/sponsor.css")
 
   if let some link := s.link then
     return {{
