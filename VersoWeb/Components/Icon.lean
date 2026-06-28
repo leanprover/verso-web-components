@@ -213,11 +213,6 @@ def globe (width : String := "25") (fill : String := "#5185F4") : Icon where
   fill := some fill
   defaultFill := some "#5185F4"
 
-def team (width : String := "25") : Icon where
-  name := "Team"
-  renderType := .img "../../static/svg/employees.svg"
-  width := some width
-
 def handShake (width : String := "25") : Icon where
   name := "Handshake"
   renderType := .img "../../static/svg/handshake.svg"
