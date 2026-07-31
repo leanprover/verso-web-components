@@ -67,5 +67,45 @@ block_component codeGallery where
       </div>
     }}
 
+/--
+A code gallery variant for editor-style layouts. It keeps the live highlighted
+snippet and file tab, but deliberately omits the explanatory footer and run
+button so a host component can provide its own editor chrome.
+-/
+block_component codeEditorGallery where
+  toHtml _ _ _ goB content := do
+    saveCss (include_str "../../../static/style/copy-button.css")
+    saveCss (include_str "../../../static/style/code-gallery.css")
+    saveJs (include_str "../../../static/js/code-block.js")
+
+    let chunks := content.chunk 4
+
+    let tabs ← chunks.mapIdxM fun idx chunk => do
+      return {{
+        <div class=s!"code-gallery-tab{if idx == 0 then " active" else ""}" role="tab" aria-selected={{if idx = 0 then "true" else "false"}}>
+          {{ ← goB <| chunk[0]! }}
+        </div>
+      }}
+
+    let snippets ← chunks.mapIdxM fun idx chunk => do
+      return {{
+        <div class=s!"code-gallery-snippet{if idx == 0 then " visible-code" else ""}">
+          {{ ← goB <| chunk[1]! }}
+        </div>
+      }}
+
+    return {{
+      <div class="code-gallery-box code-gallery-box--editor">
+        <div class="code-gallery-tabs" role="tablist">
+          {{ tabs }}
+          <div class="code-gallery-tab filler"></div>
+          <div class="code-gallery-tab-border"></div>
+        </div>
+        <div class="code-gallery-content" tabindex="-1">
+          {{ snippets }}
+        </div>
+      </div>
+    }}
+
 
 end Verso.Web.Components

@@ -13,11 +13,15 @@ function removeTabFocus() {
 }
 
 function initCodeTabs() {
-    const tabs = Array.from(document.querySelectorAll('.code-gallery-tab')).filter(tab => !tab.classList.contains('filler'));
-    const codeSnippets = document.querySelectorAll('.code-gallery-snippet');
-    const codeTips = document.querySelectorAll('.code-gallery-tip');
-    const border = document.querySelector('.code-gallery-tab-border');
-    const nextButton = document.querySelector('.hero-footer-next');
+    document.querySelectorAll('.code-gallery-box').forEach(initCodeGallery);
+}
+
+function initCodeGallery(gallery) {
+    const tabs = Array.from(gallery.querySelectorAll('.code-gallery-tab')).filter(tab => !tab.classList.contains('filler'));
+    const codeSnippets = gallery.querySelectorAll('.code-gallery-snippet');
+    const codeTips = gallery.querySelectorAll('.code-gallery-tip');
+    const border = gallery.querySelector('.code-gallery-tab-border');
+    const nextButton = gallery.querySelector('.hero-footer-next');
 
     if (tabs.length === 0 || !border) return;
 
