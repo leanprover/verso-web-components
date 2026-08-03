@@ -253,12 +253,6 @@ code {
     font-family: 'Fira Code', 'SF Mono', Monaco, monospace;
 }
 
-.markdown-body p code:not(.math),
-.markdown-body td code:not(.math),
-.markdown-body th code:not(.math),
-.markdown-body p code.hl.lean:not(.math),
-.markdown-body td code.hl.lean:not(.math),
-.markdown-body th code.hl.lean:not(.math),
 .post-content p code:not(.math),
 .post-content td code:not(.math),
 .post-content th code:not(.math),
@@ -279,12 +273,6 @@ code {
     word-break: break-word;
 }
 
-:root.dark-theme .markdown-body p code:not(.math),
-:root.dark-theme .markdown-body td code:not(.math),
-:root.dark-theme .markdown-body th code:not(.math),
-:root.dark-theme .markdown-body p code.hl.lean:not(.math),
-:root.dark-theme .markdown-body td code.hl.lean:not(.math),
-:root.dark-theme .markdown-body th code.hl.lean:not(.math),
 :root.dark-theme .post-content p code:not(.math),
 :root.dark-theme .post-content td code:not(.math),
 :root.dark-theme .post-content th code:not(.math),
@@ -296,7 +284,7 @@ code {
     border-color: rgba(107, 164, 255, 0.2);
 }
 
-.markdown-body pre, .post-content pre {
+.post-content pre {
     background: var(--color-bg);
     border: 1px solid #e2e8f0;
     border-radius: 8px;
@@ -315,7 +303,6 @@ code {
 }
 
 
-:root.dark-theme .markdown-body pre,
 :root.dark-theme .post-content pre {
     background-color: #1a1a1a;
     border-color: var(--color-border);
@@ -359,22 +346,6 @@ code {
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-}
-
-.multi-code code:not(:last-child) {
-    margin-right: 0 !important;
-    padding-right: 0 !important;
-    border-right: none !important;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-}
-
-.multi-code code:not(:first-child) {
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-    border-left: none !important;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
 }
 
 .post-index ol {
@@ -564,10 +535,6 @@ code {
     .post-container p {
         margin-bottom: 28px;
     }
-}
-
-.markdown-page .post-container {
-    gap: 30px
 }
 
 /******** Permalink widgets ********/
