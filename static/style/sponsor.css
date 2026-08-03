@@ -28,6 +28,11 @@
     padding: var(--space-8) var(--space-6);
 }
 
+/* centre a sponsor that ends up alone on the last row */
+.sponsor:last-child:nth-child(3n+1):not(:first-child) {
+    grid-column: 2;
+}
+
 img.sponsor-logo {
     width: 100%;
     max-height: 60px;
@@ -51,8 +56,31 @@ img.sponsor-logo {
         grid-template-columns: repeat(2, 1fr);
         width: 100%;
     }
+
+    /* two columns leave no middle to centre in, so a lone sponsor spans the row */
+    .sponsor:last-child:nth-child(odd):not(:first-child) {
+        grid-column: 1 / -1;
+    }
 }
 
 .dark-theme .sponsor-logo {
     filter: invert(1) brightness(10);
+}
+
+/* Sponsors that ship a dedicated dark logo swap the image instead of inverting it. */
+.sponsor-logo-dark {
+    display: none;
+}
+
+.dark-theme .sponsor-logo-light {
+    display: none;
+}
+
+.dark-theme .sponsor-logo-dark {
+    display: block;
+}
+
+.dark-theme .sponsor-logo-light,
+.dark-theme .sponsor-logo-dark {
+    filter: none;
 }
