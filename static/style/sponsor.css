@@ -92,3 +92,20 @@ img.sponsor-logo {
 .dark-theme .sponsor-logo {
     filter: invert(1) brightness(10);
 }
+
+.sponsor-logo-dark {
+    display: none;
+}
+
+.dark-theme .sponsor-logo-light {
+    display: none;
+}
+
+.dark-theme .sponsor-logo-dark {
+    display: block;
+}
+
+.dark-theme .sponsor-logo-light,
+.dark-theme .sponsor-logo-dark {
+    filter: none;
+}
