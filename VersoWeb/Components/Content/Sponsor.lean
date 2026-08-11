@@ -28,7 +28,7 @@ def logos (s : Sponsor) : Array Html :=
       {{ <img src={{dark}} alt=s!"{s.name} logo" class="sponsor-logo sponsor-logo-dark" /> }}]
 
 def render [MonadStateOf Component.State m] [Monad m] (s : Sponsor) : m Html := do
-  Template.saveCss (include_str "../../static/style/sponsor.css")
+  Template.saveCss (include_str "../../../static/style/sponsor.css")
 
   if let some link := s.link then
     return {{
