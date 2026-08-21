@@ -32,6 +32,12 @@ def getDirLinks : TemplateM (Array (Bool × Option String × Html)) := do
         else
           pure none
       | .static .. => pure none
+      | .mount name _ settings manifest =>
+        if settings.showInNav then
+          let title : Html := .text true (manifest.map (·.title) |>.getD name)
+          pure <| some (¬cur.isEmpty && cur[0]! == name && !isFroSubPage, "/" ++ name, title)
+        else
+          pure none
   | .blog _ _ subs =>
     subs.mapM fun s => do
       let name ← s.postName'
