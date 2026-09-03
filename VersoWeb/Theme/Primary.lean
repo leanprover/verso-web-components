@@ -75,6 +75,11 @@ def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (beforeNa
 
   let base := if path == #["404"] then some "/" else "/".intercalate (path.map (fun _ => "..") |>.push ".").toList
 
+  -- Only MathJax is named below: the theme's own scripts are emitted in
+  -- `<head>` along with every other registered static file, and naming them
+  -- here too loaded each of them a second time — which wrapped every code
+  -- block twice and left it with a pair of copy buttons that disagreed about
+  -- their label.
   return {{
     <html lang="en">
       {{ ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead base }}
@@ -87,10 +92,6 @@ def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (beforeNa
         {{ ← param "content" }}
         {{ ← Components.Footer.render (← footer) }}
 
-        <script src="-verso-data/theme.js" />
-        <script src="-verso-data/copy.js" />
-        <script src="-verso-data/motion.js" />
-        <script src="-verso-data/navbar.js" />
         <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
       </body>

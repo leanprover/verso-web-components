@@ -111,10 +111,6 @@
     cursor: pointer;
 }
 
-.code-block-wrapper {
-    position: relative;
-}
-
 .hl.lean span {
     color: var(--color-text) !important;
 }

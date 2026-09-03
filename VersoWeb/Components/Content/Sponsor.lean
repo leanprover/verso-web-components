@@ -16,7 +16,6 @@ structure Sponsor where
   name : String
   logo : String
   logoDark : Option String := none
-  link : Option String := none
 
 namespace Sponsor
 

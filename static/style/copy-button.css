@@ -1,3 +1,13 @@
+/* The containing block for the buttons below. It has to travel with this file:
+   `copy.js` builds a `.code-block-wrapper` around every code block on every
+   page, so a rule kept in one component's stylesheet leaves the buttons on
+   every other page resolving against whatever distant ancestor happens to be
+   positioned — which is not the block they belong to, and moves as the page
+   scrolls. The code inside is what scrolls; the wrapper stays put around it. */
+.code-block-wrapper {
+    position: relative;
+}
+
 .copy-button {
     position: absolute;
     top: 8px;

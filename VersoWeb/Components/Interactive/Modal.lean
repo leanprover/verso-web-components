@@ -17,10 +17,13 @@ block_component +directive modal (id : String) where
     saveCss (include_str "../../../static/style/modal.css")
     saveJs (include_str "../../../static/js/modal.js")
 
+    -- The close button carries the multiplication sign itself. A string
+    -- literal in this quotation is HTML-escaped, so writing the entity
+    -- `&times;` reaches the page as that text rather than as `×`.
     return {{
       <div id={{id}} class="modal-backdrop hidden" data-modal="">
         <div class="modal">
-          <button class="modal-close" aria-label="Close modal">"&times;"</button>
+          <button class="modal-close" aria-label="Close modal">"×"</button>
           <div class="modal-content">
             {{ ← contents.mapM goB }}
           </div>
