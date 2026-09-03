@@ -16,6 +16,8 @@ structure Sponsor where
   name : String
   logo : String
   logoDark : Option String := none
+  /-- Where the logo links, when the sponsor has a page to send a reader to. -/
+  link : Option String := none
 
 namespace Sponsor
 
