@@ -1,7 +1,23 @@
 let _animate = null;
 
+/*
+ * `motion.js` is already on every page as `window.Motion`, so the import below
+ * is only a fallback for a page that somehow loaded this component without the
+ * theme's scripts. Reaching for the CDN when the library is sitting in memory
+ * cost a round trip on exactly the connections least able to spare one.
+ *
+ * A visitor who asked for reduced motion never needs it at all, and never pays
+ * for it: the open and close paths below take the instant branch, and this is
+ * not called.
+ */
 async function getAnimate() {
     if (_animate) return _animate;
+
+    if (window.Motion?.animate) {
+        _animate = window.Motion.animate;
+        return _animate;
+    }
+
     const { animate } = await import('https://cdn.jsdelivr.net/npm/motion@latest/+esm');
     _animate = animate;
     return animate;
@@ -15,12 +31,20 @@ async function openModal(id) {
     backdrop.classList.remove('hidden');
     document.body.classList.add('modal-open');
 
+    if (window.motionPrefs?.reduced) return;
+
     const animate = await getAnimate();
     animate(backdrop, { opacity: [0, 1] }, { duration: 0.2, easing: 'ease-out' });
     animate(modal, { opacity: [0, 1], scale: [0.95, 1] }, { duration: 0.25, easing: [0.34, 1.56, 0.64, 1] });
 }
 
 async function closeModal(backdrop) {
+    if (window.motionPrefs?.reduced) {
+        backdrop.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+        return;
+    }
+
     const modal = backdrop.querySelector('.modal');
     const animate = await getAnimate();
 
@@ -32,7 +56,7 @@ async function closeModal(backdrop) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    getAnimate();
+    if (!window.motionPrefs?.reduced) getAnimate();
     registerModals();
 });
 

@@ -17,6 +17,15 @@ function initRevealOnScroll() {
     const reveals = document.querySelectorAll('.reveal');
     if (reveals.length === 0) return;
 
+    // Under reduced motion `motion.css` already shows these unconditionally.
+    // Marking them active as well keeps the DOM in the state the rest of the
+    // page expects, and saves running an observer whose only job would be to
+    // reproduce what the stylesheet has already done.
+    if (window.motionPrefs?.reduced) {
+        reveals.forEach(reveal => reveal.classList.add('active'));
+        return;
+    }
+
     const isMobile = window.innerWidth <= 768;
 
     const observer = new IntersectionObserver((entries) => {

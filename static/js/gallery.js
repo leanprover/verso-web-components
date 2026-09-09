@@ -198,7 +198,10 @@ function setBackgroundPosition(activeBackground, tab) {
 
 function springBackgroundPosition(activeBackground, tab) {
     const animate = window.Motion?.animate;
-    if (!animate) {
+    // The spring is the whole point of this function, so with it unavailable —
+    // no Motion, or a visitor who asked not to be moved — the indicator jumps
+    // straight to the tab that was just selected.
+    if (!animate || window.motionPrefs?.reduced) {
         setBackgroundPosition(activeBackground, tab);
         return;
     }

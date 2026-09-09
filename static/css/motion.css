@@ -1,0 +1,125 @@
+/*
+ * What the page looks like once `motion-prefs.js` has decided it should not
+ * animate. The rules below hang off `html.reduce-motion` / `html.low-power`,
+ * which that script sets before first paint, and off the media query directly
+ * so that a visitor who asked for reduced motion is served even if the script
+ * never runs.
+ *
+ * The blanket rule collapses durations rather than setting `animation: none`.
+ * Several animations here are `forwards` fills over an `opacity: 0` base — the
+ * team cards, the code-gallery tokens — so cancelling them outright would
+ * leave that content invisible. Collapsing the duration runs them to their end
+ * state in a frame instead, which is the same picture without the travel.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 1ms !important;
+        animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+        transition-delay: 0ms !important;
+    }
+
+    html,
+    body {
+        scroll-behavior: auto !important;
+    }
+}
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+}
+
+html.reduce-motion,
+.reduce-motion body {
+    scroll-behavior: auto !important;
+}
+
+/*
+ * Scroll reveals are the one thing a collapsed duration does not fix: the
+ * hidden state is the base state, and it is only undone when an
+ * IntersectionObserver adds `.active` further down the page. Under reduced
+ * motion the content is simply present from the start, so nothing below the
+ * fold depends on a scroll event that a screen reader or a keyboard user may
+ * never generate.
+ *
+ * `.js-animations` is set on <html>, and so are the classes below — hence the
+ * compound selectors rather than descendant ones.
+ */
+@media (prefers-reduced-motion: reduce) {
+    .js-animations .reveal,
+    .js-animations .org-hero,
+    .js-animations .reveal.active,
+    .js-animations .org-hero.active {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+
+.reduce-motion.js-animations .reveal,
+.reduce-motion.js-animations .org-hero,
+.reduce-motion.js-animations .reveal.active,
+.reduce-motion.js-animations .org-hero.active {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/*
+ * Hover and focus feedback stays — it is what tells you the thing under the
+ * cursor is live — but it arrives at once instead of easing in, which the
+ * blanket rule above already handles.
+ *
+ * Parallax is different: it exists only as movement, so under reduced motion
+ * the layer sits still at its resting offset.
+ */
+@media (prefers-reduced-motion: reduce) {
+    .cta-topography svg {
+        transform: none !important;
+    }
+}
+
+.reduce-motion .cta-topography svg {
+    transform: none !important;
+}
+
+/*
+ * Low-end devices only. A backdrop filter forces the compositor to re-blur
+ * everything behind the element on every frame of a scroll, and it is applied
+ * here to two elements that are on screen the whole time — the sticky header
+ * and the sticky page index. That is the single most expensive thing on the
+ * page for a budget phone, and removing it costs a little translucency.
+ *
+ * The header's translucent background assumes the blur is doing the work of
+ * separating it from the content sliding underneath, so it goes opaque here
+ * rather than leaving text legible through text.
+ */
+.low-power .site-header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: var(--color-bg);
+}
+
+.low-power .mobile-nav,
+.low-power .post-index,
+.low-power .heading-section > span.badge-secondary {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* Blur is the costly half of the reveal effect; the fade alone reads the same
+   and composites for free. */
+.low-power.js-animations .reveal,
+.low-power.js-animations .org-hero {
+    filter: none !important;
+}

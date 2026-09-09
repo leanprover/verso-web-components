@@ -25,8 +25,8 @@ private def galleryJs : String × String :=
   ("gallery.js",
    include_str("../../../static/js/glightbox.js"))
 
-private def galleryCss : String × String :=
-  ("gallery.css",
+private def tabsCss : String × String :=
+  ("tabs.css",
    include_str("../../../static/style/tabs.css"))
 
 /--
@@ -36,7 +36,7 @@ The syntax of the gallery should be a directive that contains a description list
 description list should be images, while the descriptions should be the images' captions.
 -/
 block_component gallery where
-  cssFiles := #[glightboxCss, galleryCss]
+  cssFiles := #[glightboxCss, tabsCss]
   jsFiles := #[glightboxJs, galleryJs]
 
   toHtml _id _json _goI goB contents := do
