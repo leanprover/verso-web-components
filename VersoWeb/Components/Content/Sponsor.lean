@@ -21,6 +21,7 @@ structure Sponsor where
 
 namespace Sponsor
 
+/-- The logo images for a sponsor: a single one, or a light/dark pair swapped by the theme. -/
 def logos (s : Sponsor) : Array Html :=
   match s.logoDark with
   | none => #[{{ <img src={{s.logo}} alt=s!"{s.name} logo" class="sponsor-logo" /> }}]
