@@ -39,6 +39,6 @@ block_component +directive header (level : Nat) (title : String) where
   toHtml _ _ _ _ _ := do
     saveCss (include_str "../../../static/style/title.css")
 
-    return Html.tag s!"h{level}" #[("id", defaultPostName.slugify title)] (.text true title)
+    return Html.tag s!"h{level}" #[("id", slugifyTitle title)] (.text true title)
 
 end Verso.Web.Components
