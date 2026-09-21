@@ -31,7 +31,7 @@ deriving Repr
 def learnCard [MonadStateOf Component.State m] [Monad m]  (card : Card) : m Html := do
   saveCss (include_str "../../../static/style/learn-card.css")
   return {{
-    <article class="">
+    <article class="learn-card-article">
       <a href={{ card.url }} class="card-href card main-learn-card">
         <header>
           {{ card.icon }}

@@ -54,14 +54,12 @@ function updateFaviconForSystemTheme(systemTheme) {
   setFavicon(iconPath);
 }
 
-function registerTheme() {
+function applyInitialTheme() {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
   const currentSystemTheme = mediaQuery.matches ? 'dark' : 'light';
 
   const storedSystemTheme = getStored('theme-system');
   const storedLocalTheme = getStored('theme-local');
-
-  updateFaviconForSystemTheme(currentSystemTheme);
 
   if (storedSystemTheme !== currentSystemTheme) {
     if (!storedLocalTheme || storedLocalTheme === storedSystemTheme) {
@@ -74,18 +72,21 @@ function registerTheme() {
     applyTheme(storedLocalTheme || currentSystemTheme);
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    setInput();
+  return mediaQuery;
+}
 
-    const themeToggleBtns = document.querySelectorAll('.change-theme');
-    themeToggleBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark-theme');
-        const newTheme = isDark ? 'light' : 'dark';
+function registerThemeUI(mediaQuery) {
+  updateFaviconForSystemTheme(mediaQuery.matches ? 'dark' : 'light');
+  setInput();
 
-        setStored('theme-local', newTheme);
-        applyTheme(newTheme);
-      });
+  const themeToggleBtns = document.querySelectorAll('.change-theme');
+  themeToggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark-theme');
+      const newTheme = isDark ? 'light' : 'dark';
+
+      setStored('theme-local', newTheme);
+      applyTheme(newTheme);
     });
   });
 
@@ -106,4 +107,8 @@ function registerTheme() {
   });
 }
 
-registerTheme();
+const themeMediaQuery = applyInitialTheme();
+
+window.addEventListener('DOMContentLoaded', () => {
+  registerThemeUI(themeMediaQuery);
+});

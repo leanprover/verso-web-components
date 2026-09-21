@@ -10,7 +10,7 @@ open Lean Verso Output Html Genre Blog Template Verso.Web Util
 
 namespace Verso.Web.Components
 
-def gridSvg := svg("./static/svg/grid.svg")
+def gridSvg := svg("../../../static/svg/grid.svg")
 
 /--
 Grid background image.

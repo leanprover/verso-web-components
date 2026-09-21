@@ -23,7 +23,7 @@ structure PostConfig where
 /--
 Render article content with optional metadata.
 -/
-def articleContent (title : Html) (content : Html) (metadata : Option Post.PartMetadata) : Html :=
+def articleContent (title : Html) (content : Html) (metadata : Option Post.PartMetadata) (page : String) : Html :=
   {{
     <article class="post-container" id={{(metadata >>= (Post.Meta.htmlId)) |>.getD "post"}}>
       <h1>{{title}}</h1>
@@ -46,7 +46,7 @@ def articleContent (title : Html) (content : Html) (metadata : Option Post.PartM
         }}
       }}
       <div class="post-content">
-        {{ addSlug content }}
+        {{ addSlug page content }}
       </div>
     </article>
   }}
@@ -59,14 +59,14 @@ def postTemplate (config : PostConfig) : Template := do
   let metadata ← param? "metadata"
   let title ← param "title"
   let path ← currentPath
-  let nav := collectH1 content path.link
+  let nav := collectH1 content path.relativeLink
 
   let containerClass := s!"container {config.hasSpecialStyling path |>.map (" " ++ ·) |>.getD ""}"
 
   pure {{
     <main class={{containerClass}}>
     <div class=s!"{if nav.isSome then "post-grid" else "post-center"} post-page" role="main">
-      {{ articleContent title content metadata }}
+      {{ articleContent title content metadata path.relativeLink }}
       {{
         if let some nav := nav then
           {{

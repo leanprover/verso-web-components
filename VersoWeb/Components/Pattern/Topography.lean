@@ -20,7 +20,7 @@ def mainTopography [MonadStateOf Component.State m] [Monad m] : m Html := do
   return {{
     <div id="main-background" class="background-wrapper" aria-hidden="true">
       {{
-        svg("./static/svg/background.svg")
+        svg("../../../static/svg/background.svg")
         |> setAttribute "aria-hidden" "true"
         |> setAttribute "alt" "Topography background"
       }}
@@ -33,7 +33,7 @@ def topography [MonadStateOf Component.State m] [Monad m] : m Html := do
   return {{
     <div class="topography-wrapper">
       {{
-        svg("./static/svg/topography.svg")
+        svg("../../../static/svg/topography.svg")
         |> setAttribute "aria-hidden" "true"
         |> setAttribute "alt" "Topography background"
         |> setAttribute "class" "topography-background"
