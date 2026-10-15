@@ -72,13 +72,9 @@ structure LayoutConfig where
 Primary HTML template with configurable site name and extra head content.
 -/
 def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (beforeNavBar : Html := .empty) (navBar : TemplateM NavBarConfig) (footer : TemplateM FooterConfig) : TemplateM Html := do
-  let path ← currentPath
-
-  let base := if path == #["404"] then some "/" else "/".intercalate (path.map (fun _ => "..") |>.push ".").toList
-
   return {{
     <html lang="en">
-      {{ ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead base }}
+      {{ ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead }}
       <body>
         {{ ← Components.noJSBar }}
         {{ beforeNavBar }}
