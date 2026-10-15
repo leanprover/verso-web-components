@@ -5,14 +5,11 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Verso.Doc.Html
-public import VersoBlog
-public import VersoWeb.Components.NoJs
 public import VersoWeb.Components.NavBar
 public import VersoWeb.Components.Footer
 public import VersoWeb.Theme.Head
-public import VersoWeb.Theme.Css
 public import VersoWeb.Theme.Post
+import VersoWeb.Components.NoJs
 
 public section
 

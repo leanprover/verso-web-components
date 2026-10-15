@@ -5,9 +5,8 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Verso.Doc.Html
-public import VersoBlog
-public import VersoWeb.Components.Icon
+public import VersoBlog.Component
+import VersoWeb.Components.Icon
 
 public section
 
@@ -15,7 +14,7 @@ namespace Verso.Web.Components
 
 open Lean (Html)
 open Verso.Output.Html
-open Verso.Genre.Blog Template
+open Verso.Genre.Blog
 
 /-!
 # Footer Component

@@ -5,13 +5,12 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import VersoWeb.Components.Icon
+public import VersoBlog.Template
 
 public section
 
 open Lean Elab Term
 open Verso.Output.Html
-open Verso.Web Components Icon
 open Verso Genre Blog ArgParse Doc Elab Template
 
 namespace Verso.Web.Components

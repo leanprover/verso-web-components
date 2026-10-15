@@ -5,9 +5,8 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Verso.Doc.Html
-public import VersoBlog
 public import VersoWeb.Components.Icon
+public import VersoBlog.Template
 
 public section
 

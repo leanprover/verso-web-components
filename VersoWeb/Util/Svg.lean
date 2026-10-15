@@ -5,8 +5,9 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Lean
-public import Verso.Doc.Html
+public meta import Lean.Elab.Term.TermElabM
+public meta import Std.Do.Triple.SpecLemmas
+import Verso.Output.Html
 
 public section
 

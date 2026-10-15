@@ -5,8 +5,6 @@ Author: Sofia Rodrigues
 -/
 module
 
-public import VersoBlog
-
 public import VersoWeb.Theme.Archive
 public import VersoWeb.Theme.Category
 public import VersoWeb.Theme.Primary
@@ -14,6 +12,7 @@ public import VersoWeb.Theme.Post
 public import VersoWeb.Theme.Page
 public import VersoWeb.Theme.Css
 public import VersoWeb.Theme.Static
+public import VersoBlog.Theme
 
 public section
 

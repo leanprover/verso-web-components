@@ -5,11 +5,8 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Verso.Doc.ArgParse
-public import Verso.Doc.Html
-public import VersoBlog
 public import VersoWeb.Util.Svg
-public import Std.Data.HashSet
+public import VersoBlog.Template
 
 public section
 

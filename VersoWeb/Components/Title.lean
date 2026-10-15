@@ -6,6 +6,7 @@ Authors: Sofia Rodrigues
 import Verso.Doc.Html
 import VersoBlog
 import VersoWeb.Components.Icon
+import VersoWeb.Util
 
 namespace Verso.Web.Components
 

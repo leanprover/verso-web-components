@@ -5,12 +5,9 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Verso.Doc.Html
-public import VersoBlog
-public import VersoWeb.Components.ArchiveEntry
-public import VersoWeb.Components.Aside
-public import VersoWeb.Theme.Post
 public import VersoWeb.Theme.Primary
+import VersoWeb.Components.Aside
+import VersoWeb.Util
 
 public section
 

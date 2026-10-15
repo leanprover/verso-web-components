@@ -5,16 +5,13 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Verso.Doc.Html
-public import VersoBlog
-public import VersoWeb.Components.ArchiveEntry
 public import VersoWeb.Theme.Css
+public import VersoBlog.Template
 
 public section
 
 open Lean (Html)
 open Verso Genre Blog Template Output.Html
-open Verso.Web.Components
 
 namespace Verso.Web.Theme
 

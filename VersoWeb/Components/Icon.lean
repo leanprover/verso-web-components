@@ -5,18 +5,16 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Lean
-public import VersoBlog
-public import Verso.Doc.Html
-public import VersoWeb.Util
-public import VersoWeb.Util.Svg
+public import Lean.Data.Html.Basic
+import Verso.Output.Html
+import VersoWeb.Util.Svg
 
 public section
 
 namespace Verso.Web.Components
 
 open Lean (Html)
-open Verso Output.Html Genre ArgParse
+open Verso Output.Html
 open Verso.Web.Util
 
 /-!

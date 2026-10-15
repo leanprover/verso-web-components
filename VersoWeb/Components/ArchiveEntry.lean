@@ -5,9 +5,7 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import Verso.Doc.Html
 public import VersoWeb.Components.Button.ReadMore
-public import VersoWeb.Components.Icon
 public import VersoWeb.Util
 
 public section

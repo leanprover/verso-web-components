@@ -5,8 +5,10 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import VersoWeb.Components.Icon
-public import Lean.Elab
+public meta import Verso.Doc.Elab.Monad
+public meta import Verso.Doc.Elab.Block
+public import VersoBlog.Basic
+import VersoBlog.Component
 
 public section
 

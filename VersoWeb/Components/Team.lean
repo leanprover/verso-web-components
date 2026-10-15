@@ -5,7 +5,8 @@ Authors: Sofia Rodrigues
 -/
 module
 
-public import VersoBlog
+public import VersoBlog.Component
+import VersoBlog.Template
 
 public section
 
