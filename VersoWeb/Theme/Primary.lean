@@ -3,14 +3,18 @@ Copyright (c) 2025 Lean FRO LLC. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Sofia Rodrigues
 -/
-import Verso.Doc.Html
-import VersoBlog
-import VersoWeb.Components.NoJs
-import VersoWeb.Components.NavBar
-import VersoWeb.Components.Footer
-import VersoWeb.Theme.Head
-import VersoWeb.Theme.Css
-import VersoWeb.Theme.Post
+module
+
+public import Verso.Doc.Html
+public import VersoBlog
+public import VersoWeb.Components.NoJs
+public import VersoWeb.Components.NavBar
+public import VersoWeb.Components.Footer
+public import VersoWeb.Theme.Head
+public import VersoWeb.Theme.Css
+public import VersoWeb.Theme.Post
+
+public section
 
 open Lean (Html)
 open Verso Genre Blog Template Output.Html Multi

@@ -3,8 +3,12 @@ Copyright (c) 2025 Lean FRO, LLC. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Sofia Rodrigues
 -/
-import VersoWeb.Components.Icon
-import Lean.Elab
+module
+
+public import VersoWeb.Components.Icon
+public import Lean.Elab
+
+public section
 
 open Lean Elab Term
 open Lean.Doc (DescListView DescItemView ImageView TextView)
@@ -76,7 +80,7 @@ block_component galleryItem (name url title : String) where
 /--
 Translates an item of a description list into a gallery item component.
 -/
-private def getItem (name : String) (item : DescItemView) : DocElabM (TSyntax `term) := do
+private meta def getItem (name : String) (item : DescItemView) : DocElabM (TSyntax `term) := do
   let terms := mkNullNode (item.term.map (·.raw))
   let #[img] := item.term.filter fun inl =>
       match TextView.of inl with
@@ -91,7 +95,7 @@ private def getItem (name : String) (item : DescItemView) : DocElabM (TSyntax `t
   ``(galleryItem $(quote name) $(quote url.getVersoLinkUrl) $(quote image.getAlt) #[$[$(← item.desc.mapM elabBlock)],*])
 
 @[directive_expander gallery, inherit_doc gallery]
-def galleryDir : DirectiveExpander
+meta def galleryDir : DirectiveExpander
   | args, #[block] => do
     let name ← ArgParse.run (.positional `name .string) args
     let some { items, .. } := DescListView.of block

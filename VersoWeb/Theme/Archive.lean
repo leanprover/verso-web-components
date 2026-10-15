@@ -3,9 +3,13 @@ Copyright (c) 2025 Lean FRO LLC. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Sofia Rodrigues
 -/
-import Verso.Doc.Html
-import VersoBlog
-import VersoWeb.Components.ArchiveEntry
+module
+
+public import Verso.Doc.Html
+public import VersoBlog
+public import VersoWeb.Components.ArchiveEntry
+
+public section
 
 open Lean (Html)
 open Verso Genre Blog Template Output.Html
