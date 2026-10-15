@@ -11,7 +11,6 @@ import VersoWeb.Util
 namespace Verso.Web.Components
 
 open Lean (Html)
-open Verso.Output.Html
 open Verso.Genre.Blog Template
 
 def badge (content : String) (variant : String := "primary") : Html :=

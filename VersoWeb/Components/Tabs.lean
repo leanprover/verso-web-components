@@ -6,7 +6,7 @@ Authors: Sofia Rodrigues
 import VersoWeb.Components.Icon
 import VersoWeb.Util
 
-open Lean Elab Term
+open Lean
 open Verso Output.Html Genre Blog Template
 open Verso.Web Components Icon Util
 

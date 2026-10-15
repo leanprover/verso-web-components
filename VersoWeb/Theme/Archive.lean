@@ -11,8 +11,7 @@ import VersoWeb.Components.ArchiveEntry
 public section
 
 open Lean (Html)
-open Verso Genre Blog Template Output.Html
-open Verso.Web.Components
+open Verso Genre Blog Template
 
 namespace Verso.Web.Theme
 

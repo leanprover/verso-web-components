@@ -11,7 +11,6 @@ public section
 
 namespace Verso.Web.Components
 
-open Verso.Output.Html
 open Verso Genre Lean Blog Template
 
 def gameCard

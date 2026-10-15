@@ -13,7 +13,7 @@ public section
 namespace Verso.Web.Util
 
 open Lean (Html)
-open Verso Genre Blog Template ArgParse
+open Verso Genre Blog ArgParse
 
 /--
 Function to get all the links from the pages that we created.

@@ -12,7 +12,7 @@ public section
 namespace Verso.Web.Components
 
 open Lean (Html)
-open Verso Output.Html Genre Blog
+open Verso Genre Blog
 
 /--
 The `aside` component is used to create a sidebar with a title and content.

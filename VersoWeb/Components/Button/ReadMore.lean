@@ -13,7 +13,7 @@ public section
 namespace Verso.Web.Components
 
 open Lean (Html)
-open Verso Output.Html Genre Blog Template
+open Verso Genre Blog Template
 
 namespace Button
 

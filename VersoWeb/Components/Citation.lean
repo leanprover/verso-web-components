@@ -10,7 +10,6 @@ public import VersoBlog.Template
 public section
 
 open Lean (Html)
-open Verso.Output.Html
 open Verso.Genre.Blog Template
 
 namespace Verso.Web.Components

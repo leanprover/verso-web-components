@@ -11,8 +11,8 @@ import VersoWeb.Util
 public section
 
 open Lean (Html)
-open Verso Genre Blog Template Output.Html
-open Verso.Web Components Util Multi
+open Verso Genre Blog Template
+open Verso.Web Util Multi
 
 namespace Verso.Web.Theme
 

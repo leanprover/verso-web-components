@@ -9,8 +9,7 @@ import VersoWeb.Util
 namespace Verso.Web.Components
 
 open Lean (Html)
-open Verso.Web Util
-open Verso Output.Html Genre Blog Template
+open Output.Html Genre Blog Template
 
 /--
 Topography background image.

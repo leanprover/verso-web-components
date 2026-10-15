@@ -10,10 +10,8 @@ public import VersoBlog.Template
 
 public section
 
-open Lean Elab Term
-open Verso.Output.Html
-open Verso.Web Components Icon
-open Verso Genre Blog ArgParse Doc Elab Template
+open Lean
+open Verso Genre Blog Template
 
 namespace Verso.Web.Components
 

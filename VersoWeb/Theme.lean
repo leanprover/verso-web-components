@@ -19,7 +19,7 @@ public section
 namespace Verso.Web
 
 open Verso Genre Blog
-open Verso.Web Components
+open Components
 
 /--
 The main theme of the lean-lang.org website.

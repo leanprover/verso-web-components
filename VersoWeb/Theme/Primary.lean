@@ -14,7 +14,7 @@ import VersoWeb.Components.NoJs
 public section
 
 open Lean (Html)
-open Verso Genre Blog Template Output.Html Multi
+open Verso Genre Blog Template Multi
 open Verso.Web.Components
 
 namespace Verso.Web.Theme

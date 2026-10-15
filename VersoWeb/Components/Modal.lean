@@ -9,7 +9,6 @@ import VersoWeb.Components.Icon
 
 namespace Verso.Web.Components
 
-open Verso.Output.Html
 open Verso.Genre.Blog Template
 
 block_component +directive modal (id : String) where

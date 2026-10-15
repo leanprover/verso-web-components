@@ -12,8 +12,6 @@ public section
 
 namespace Verso.Web.Components
 
-open Lean (Html)
-open Verso.Output.Html
 open Verso Genre Lean Blog Template
 
 inductive ButtonType
