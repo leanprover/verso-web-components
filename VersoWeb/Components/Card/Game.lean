@@ -23,15 +23,15 @@ def gameCard
     (imageSrc : String) : m Html := do
   saveCss (include_str "../../../static/style/game-card.css")
 
-  return {{
+  return html%{
     <div class="card game-info card-item white-blue-gradient">
       <div class="game-container">
-        <h4>{{ title }}</h4>
-        <p>{{ description }}</p>
-        {{ ← Button.readMore buttonUrl }}
+        <h4>{ title }</h4>
+        <p>{ description }</p>
+        { ← Button.readMore buttonUrl }
       </div>
-      <img src={{ imageSrc }} />
+      <img src={ imageSrc } />
     </div>
-  }}
+  }
 
 end Verso.Web.Components

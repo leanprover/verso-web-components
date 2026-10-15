@@ -19,16 +19,16 @@ namespace Verso.Web.Theme
 Generic category template.
 -/
 def categoryTemplate : TemplateM Html := do
-  return {{
-    <div class=s!"main category-page" role="main">
+  return html%{
+    <div class={s!"main category-page"} role="main">
 
       <section class="category-section container">
        <h1 class="category-title">
-        {{ ← param "title"}}
+        { ← param "title" }
        </h1>
-        {{ (← param? "posts" : Option Html) }}
+        {(← param? "posts" : Option Html)}
       </section>
     </div>
-  }}
+  }
 
 end Verso.Web.Theme

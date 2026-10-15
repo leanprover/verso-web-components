@@ -67,14 +67,14 @@ Renders a Citation as HTML for display in a blog post or page.
 def render [MonadStateOf Component.State m] [Monad m] (citation : Citation) : m Html := do
   saveCss (include_str "../../static/style/citation.css")
 
-  return {{
+  return html%{
     <div class="citation-item">
-        <span class="citation-authors">{{ citation.authors }}</span>
-        <span class="citation-title">{{ citation.title }}</span>
-        <span class="citation-venue">{{ citation.venue }}</span>
-        <span class="citation-year">{{ citation.date }} </span>
-        <span class="citation-pages">{{ citation.pages }}</span>
+        <span class="citation-authors">{ citation.authors }</span>
+        <span class="citation-title">{ citation.title }</span>
+        <span class="citation-venue">{ citation.venue }</span>
+        <span class="citation-year">{ citation.date }</span>
+        <span class="citation-pages">{ citation.pages }</span>
     </div>
-  }}
+  }
 
 end Verso.Web.Components.Citation

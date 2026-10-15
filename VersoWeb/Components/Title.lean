@@ -15,18 +15,18 @@ open Verso.Output.Html
 open Verso.Genre.Blog Template
 
 def badge (content : String) (variant : String := "primary") : Html :=
-  {{ <span class=s!"badge-{variant}"> {{ content }} </span> }}
+  html%{<span class={s!"badge-{variant}"}>{ content }</span>}
 
 def sectionTitle [MonadStateOf Component.State m] [Monad m] (tag : Option String) (title : String) (subtitle : Option Html) (variant : String := "primary") : m Html := do
   saveCss (include_str "../../static/style/title.css")
 
-  return {{
+  return html%{
     <div class="heading-section">
-      {{ tag <&> (badge · variant) }}
-      <h1 class="heading-title">{{title}}</h1>
-      {{ subtitle <&> ({{<p class="heading-subtitle">{{·}}</p>}})}}
+      { tag <&> (badge · variant) }
+      <h1 class="heading-title">{title}</h1>
+      { subtitle <&> (html%{<p class="heading-subtitle">{·}</p>})}
     </div>
-  }}
+  }
 
 block_component +directive sectionTitle' (tagg : Option String) (title : String) (subtitle : Option String) where
   toHtml _ _ _ _ _ := sectionTitle tagg title subtitle

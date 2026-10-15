@@ -18,15 +18,15 @@ open Verso Output.Html Genre Blog
 The `aside` component is used to create a sidebar with a title and content.
 -/
 def aside [MonadStateOf Component.State m] [Monad m] (title : String) (content : Html) : m Html := do
-  return {{
+  return html%{
     <aside>
       <nav class="post-index">
         <h1 class="title">
-          {{ title }}
+          { title }
         </h1>
-        {{ content }}
+        { content }
       </nav>
     </aside>
-  }}
+  }
 
 end Verso.Web.Components

@@ -77,17 +77,17 @@ def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (beforeNa
 
   let base := if path == #["404"] then some "/" else "/".intercalate (path.map (fun _ => "..") |>.push ".").toList
 
-  return {{
+  return html%{
     <html lang="en">
-      {{ ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead base }}
+      { ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead base }
       <body>
-        {{ ← Components.noJSBar }}
-        {{ beforeNavBar }}
+        { ← Components.noJSBar }
+        { beforeNavBar }
         <header class="site-header">
-          {{ ← Components.NavBar.render (← navBar) }}
+          { ← Components.NavBar.render (← navBar) }
         </header>
-        {{ ← param "content" }}
-        {{ ← Components.Footer.render (← footer) }}
+        { ← param "content" }
+        { ← Components.Footer.render (← footer) }
 
         <script src="-verso-data/theme.js" />
         <script src="-verso-data/copy.js" />
@@ -97,6 +97,6 @@ def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (beforeNa
 
       </body>
     </html>
-  }}
+  }
 
 end Verso.Web.Theme
