@@ -118,7 +118,7 @@ def HeadConfig.toHtml (data : HeadConfig) : Html :=
 /--
 Builds the HTML for the head of a page.
 -/
-def head (siteName : String) (rootTitle : String) (config : HeadConfig) (variables : ThemeConfig) (social : Option SocialMeta := none) (extraHead : Html := .empty) (base : Option String := none) : TemplateM Html := do
+def head (siteName : String) (rootTitle : String) (config : HeadConfig) (variables : ThemeConfig) (social : Option SocialMeta := none) (extraHead : Html := .empty) : TemplateM Html := do
   let title ← param (α := String) "title"
   let page ← currentPath
 
