@@ -73,11 +73,6 @@
     color: white;
 }
 
-.post-content li {
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
-}
-
 .post-content h1,
 .post-content h2,
 .post-content h3,
@@ -309,13 +304,7 @@ code {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
-.post-container .hl.lean.block {
-    margin: 1rem 0;
-    padding: 0;
-    line-height: 1.5;
-    overflow: auto;
-}
-
+.post-container .code-block-wrapper:has(+ .code-block-wrapper),
 .post-container .code-block-wrapper:has(+ .code-block-wrapper) .hl.lean.block {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -324,34 +313,13 @@ code {
     border-bottom-right-radius: 0;
 }
 
-.post-container .code-block-wrapper:has(+ .code-block-wrapper) {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.post-container .code-block-wrapper:is(.code-block-wrapper + .code-block-wrapper) {
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
+.post-container .code-block-wrapper:is(.code-block-wrapper + .code-block-wrapper),
 .post-container .code-block-wrapper:is(.code-block-wrapper + .code-block-wrapper) .hl.lean.block {
     margin-top: 0;
     padding-top: 0;
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-}
-
-.post-index ol {
-  list-style: none;
-  padding-left: 1.5em;
-  counter-reset: section;
 }
 
 .post-index ol li {
@@ -375,6 +343,7 @@ code {
 }
 
 .post-index ol {
+    list-style: none;
     padding-left: 1rem;
     margin: 0;
 }
@@ -448,7 +417,7 @@ code {
     line-height: 1.5;
     font-size: 1rem;
     border: 1px solid #e9ecef;
-    overflow-x: auto;
+    overflow: auto;
 }
 
 :root.dark-theme .post-container code.hl.lean.block {
@@ -510,15 +479,7 @@ code {
     .post-content h3 {
         font-size: 1.4rem;
     }
-}
 
-@media (max-width: 768px) {
-    .wrap {
-        padding-top: 20px;
-    }
-}
-
-@media (max-width: 768px) {
     .post-container h1 {
         font-size: 2rem;
         line-height: 1.2;

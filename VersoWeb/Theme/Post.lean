@@ -22,9 +22,11 @@ structure PostConfig where
   hasSpecialStyling : Path → Option String := fun _ => none
 
 /--
-Render article content with optional metadata.
+Render article content with optional metadata. `contentClass` is added to the `post-content`
+element, for sites that style the body of some articles differently.
 -/
-def articleContent (title : Html) (content : Html) (metadata : Option Post.PartMetadata) (page : String) : Html :=
+def articleContent (title : Html) (content : Html) (metadata : Option Post.PartMetadata) (page : String)
+    (contentClass : Option String := none) : Html :=
   html%{
     <article class="post-container" id={(metadata >>= (Post.Meta.htmlId)) |>.getD "post"}>
       <h1>{title}</h1>
@@ -46,7 +48,7 @@ def articleContent (title : Html) (content : Html) (metadata : Option Post.PartM
           </div>
         }
       }
-      <div class="post-content">
+      <div class={s!"post-content{contentClass.map (" " ++ ·) |>.getD ""}"}>
         { addSlug page content }
       </div>
     </article>
