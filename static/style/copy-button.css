@@ -28,6 +28,11 @@
     opacity: 1;
 }
 
+.copy-button:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
 .hero .copy-button {
     right: 0px;
     top: 0px;
