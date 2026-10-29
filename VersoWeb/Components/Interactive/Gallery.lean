@@ -41,11 +41,11 @@ block_component gallery where
 
   toHtml _id _json _goI goB contents := do
     let «class» := if contents.size == 1 then "screenshot" else "gallery"
-    pure {{
-      <div class={{«class»}}>
-        {{← contents.mapM goB}}
+    pure html%{
+      <div class={«class»}>
+        {← contents.mapM goB}
       </div>
-    }}
+    }
 
 private def keepAlphaNum (s : String) : String := Id.run do
   let mut out := ""
@@ -60,18 +60,18 @@ open Output.Html in
 block_component galleryItem (name url title : String) where
   toHtml _ _ _ goB contents := do
     let descClass := "desc--" ++ keepAlphaNum title
-    pure {{
+    pure html%{
       <div class="gallery-item">
-        <a href={{url}}
-           data-gallery={{name}}
-            data-glightbox=s!"title: {title}; description: .{descClass}">
-          <img src={{url}} alt={{title}}/>
+        <a href={url}
+           data-gallery={name}
+            data-glightbox={s!"title: {title}; description: .{descClass}"}>
+          <img src={url} alt={title}/>
         </a>
       </div>
-      <div class=s!"{descClass} glightbox-desc">
-        {{← contents.mapM goB}}
+      <div class={s!"{descClass} glightbox-desc"}>
+        {← contents.mapM goB}
       </div>
-    }}
+    }
 
 /--
 Translates an item of a description list into a gallery item component.

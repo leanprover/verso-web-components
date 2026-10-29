@@ -19,13 +19,13 @@ Bar to display a message when JavaScript is disabled.
 def noJSBar [MonadStateOf Component.State m] [Monad m] : m Html := do
   saveCss (include_str "../../../static/style/noJs.css")
 
-  return {{
+  return html%{
     <noscript>
       <div class="no-js-warning">
-          "If you want the full website experience, enable JS"
+        If you want the full website experience, enable JS
       </div>
     </noscript>
-  }}
+  }
 
 
 end Verso.Web.Components

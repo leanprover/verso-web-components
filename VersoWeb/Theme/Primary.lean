@@ -72,31 +72,27 @@ structure LayoutConfig where
 Primary HTML template with configurable site name and extra head content.
 -/
 def primaryTemplate (config : SiteConfig) (extraHead : Html := .empty) (beforeNavBar : Html := .empty) (navBar : TemplateM NavBarConfig) (footer : TemplateM FooterConfig) : TemplateM Html := do
-  let path ← currentPath
-
-  let base := if path == #["404"] then some "/" else "/".intercalate (path.map (fun _ => "..") |>.push ".").toList
-
   -- Only MathJax is named below: the theme's own scripts are emitted in
   -- `<head>` along with every other registered static file, and naming them
   -- here too loaded each of them a second time — which wrapped every code
   -- block twice and left it with a pair of copy buttons that disagreed about
   -- their label.
-  return {{
+  return html%{
     <html lang="en">
-      {{ ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead base }}
+      { ← head config.siteName config.rootTitle config.headConfig config.variables config.socialMeta extraHead }
       <body>
-        {{ ← Components.noJSBar }}
-        {{ beforeNavBar }}
+        { ← Components.noJSBar }
+        { beforeNavBar }
         <header class="site-header">
-          {{ ← Components.NavBar.render (← navBar) }}
+          { ← Components.NavBar.render (← navBar) }
         </header>
-        {{ ← param "content" }}
-        {{ ← Components.Footer.render (← footer) }}
+        { ← param "content" }
+        { ← Components.Footer.render (← footer) }
 
         <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
       </body>
     </html>
-  }}
+  }
 
 end Verso.Web.Theme

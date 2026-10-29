@@ -73,7 +73,7 @@ private def renderSvg (content : Html) (icon : Icon) : Html :=
 
 private def renderImg (src : String) (icon : Icon) : Html :=
   let width := effectiveWidth icon
-  {{ <img width={{width}} src={{src}} alt={{icon.name}} /> }}
+  html%{<img width={width} src={src} alt={icon.name} />}
 
 private def renderStyledSvg (content : Html) (viewBox : Option String) (icon : Icon) : Html :=
   let strokeWidth := toString (effectiveStrokeWidth icon)
@@ -91,11 +91,11 @@ private def renderStyledSvg (content : Html) (viewBox : Option String) (icon : I
 private def renderText (content : String) (icon : Icon) : Html :=
   let color := (effectiveFill icon).getD "#386EE0"
   let fontSize := icon.fontSize.getD "40px"
-  {{
-    <i style=s!"width:{fontSize};height:{fontSize};color:{color};font-size:{fontSize};font-weight:500">
-      {{content}}
+  html%{
+    <i style={s!"width:{fontSize};height:{fontSize};color:{color};font-size:{fontSize};font-weight:500"}>
+      {content}
     </i>
-  }}
+  }
 
 /--
 Main render function

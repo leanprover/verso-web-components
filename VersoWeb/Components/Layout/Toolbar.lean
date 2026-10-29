@@ -16,10 +16,10 @@ structure Tool where
 
 def toolbar [MonadStateOf Component.State m] [Monad m] (buttons : Array Tool) : m Html := do
   saveCss (include_str "../../../static/style/toolbar.css")
-  return {{
+  return html%{
     <div class="button-container">
-    {{ buttons.map (fun btn => {{ <a class="btn" href={{btn.target}}>{{ btn.icon }} {{ btn.text }} </a> }}) }}
+    { buttons.map (fun btn => html%{<a class="btn" href={btn.target}>{ btn.icon }{ btn.text }</a>}) }
   </div>
-  }}
+  }
 
 end Verso.Web.Components

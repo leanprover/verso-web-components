@@ -25,10 +25,10 @@ def button [MonadStateOf Component.State m] [Monad m] (style : Button.Style) (hr
     let invertedClass :=  if inverted then " inverted" else ""
     let extraClasses := if classes.isEmpty then "" else " " ++ String.intercalate " " classes.toList
 
-    return {{
-      <a class={{s!"button {toString style}{invertedClass}{extraClasses}"}} href={{href}}>
-        {{ content }}
+    return html%{
+      <a class={s!"button {toString style}{invertedClass}{extraClasses}"} href={href}>
+        { content }
       </a>
-    }}
+    }
 
 end Verso.Web.Components
