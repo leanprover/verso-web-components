@@ -1,4 +1,15 @@
-// A "Copy" button on every code block.
+// A copy button on every code block.
+
+// What the button says in each state, as its tooltip and for anyone who cannot
+// see the icon that `copy-button.css` draws for that state.
+const COPY_LABELS = { ready: "Copy", copied: "Copied!", failed: "Copy failed" };
+
+function setCopyState(button, state) {
+    const label = COPY_LABELS[state];
+    button.dataset.state = state;
+    button.title = label;
+    button.setAttribute("aria-label", label);
+}
 
 // A line of a terminal transcript that the reader typed, rather than one the
 // terminal printed back. Only the prompts a shell actually draws count: `#`
@@ -40,8 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el.closest(".no-clip")) return;
 
     const button = document.createElement("button");
-    button.textContent = "Copy";
     button.classList.add("copy-button");
+    setCopyState(button, "ready");
 
     const wrapper = document.createElement("div");
     wrapper.classList.add("code-block-wrapper");
@@ -52,11 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("click", () => {
       navigator.clipboard.writeText(copyText(el)).then(() => {
-        button.textContent = "Copied!";
-        setTimeout(() => (button.textContent = "Copy"), 1500);
+        setCopyState(button, "copied");
+        setTimeout(() => setCopyState(button, "ready"), 1500);
       }).catch(err => {
         console.error("Copy failed", err);
-        button.textContent = "Error";
+        setCopyState(button, "failed");
       });
     });
   });
