@@ -62,6 +62,8 @@ function applyInitialTheme() {
   const storedLocalTheme = getStored('theme-local');
 
   if (storedSystemTheme !== currentSystemTheme) {
+    setStored('theme-system', currentSystemTheme);
+
     if (!storedLocalTheme || storedLocalTheme === storedSystemTheme) {
       setStored('theme-local', currentSystemTheme);
       applyTheme(currentSystemTheme);
@@ -111,4 +113,9 @@ const themeMediaQuery = applyInitialTheme();
 
 window.addEventListener('DOMContentLoaded', () => {
   registerThemeUI(themeMediaQuery);
+});
+
+// A page restored from the back/forward cache doesn't run this script again.
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) applyInitialTheme();
 });
